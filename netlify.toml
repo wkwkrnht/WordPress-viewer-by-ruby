@@ -1,2 +1,2 @@
 [build]
-    command = 'slimrb -p'
+    command = 'slimrb -p index.html.slim > index.html'
