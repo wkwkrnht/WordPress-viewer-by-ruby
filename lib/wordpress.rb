@@ -11,7 +11,7 @@ class WpClient
     end
 
     def site_meta(which)
-        data = @conn.get 'wp-json/'
+        data = @conn.get('wp-json/')
         data = JSON.parse(data)
         if which == 'site_title'
             return data['name']
