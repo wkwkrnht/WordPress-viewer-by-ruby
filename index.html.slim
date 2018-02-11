@@ -73,11 +73,11 @@ html lang='ja'
                 = site_title
         main.card-list
             - total_pages.times do |n|
+                - n = n + 1
                 - now_path = "#{path}&page=#{n}"
                 - res = wp_client.list_posts(now_path)
-                - parsed_articles = JSON.parse(res.body)
-                - 100.times do |i|
-                    - post = parsed_articles[i]
+                - parsed_posts = JSON.parse(res.body)
+                - parsed_posts.each do |post|
                     /- wp_client.make_post(post)
                     - title = post['title']['redered']
                     - img = post['_links']['wp:attachment']['href']
