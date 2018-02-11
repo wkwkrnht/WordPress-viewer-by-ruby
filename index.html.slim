@@ -76,10 +76,10 @@ html lang='ja'
                 - now_path = "#{path}&page=#{n}"
                 - res = wp_client.list_posts(now_path)
                 - parsed_articles = JSON.parse(res.body)
-                - parsed_articles.each_with_index do |post, i|
+                - for post in parsed_articles do
                     /- wp_client.make_post(post[i])
-                    - title = post[i]['title']['redered']
-                    - img = post[i]['_links']['wp:attachment']['href']
+                    - title = post['title']['redered']
+                    - img = post['_links']['wp:attachment']['href']
                     = link_to URI.join(URI.encode(base_url),URI.encode(post[i]['slug'])), :class=>'mini-card', :title=>title, :tabindex=>'0' do
                         = image_tag img, :alt=>'eyecatch', :class=>'card-img'
                         div.card-meta
