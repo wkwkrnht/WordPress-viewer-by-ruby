@@ -78,8 +78,8 @@ html lang='ja'
                 - res = wp_client.list_posts(now_path)
                 - parsed_posts = JSON.parse(res.body)
                 - parsed_posts.each do |post|
-                    /- wp_client.make_post(post)
-                    - title = post['title']['redered']
+                    - wp_client.make_post(post)
+                    - title = post['title']['rendered']
                     - img = post['featured_media']
                     a.mini-card href=URI.join(URI.encode(base_url),URI.encode(post['slug'])) title=title tabindex='0'
                         img.card-img src=img alt='eyecatch'
