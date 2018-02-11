@@ -76,8 +76,9 @@ html lang='ja'
                 - now_path = "#{path}&page=#{n}"
                 - res = wp_client.list_posts(now_path)
                 - parsed_articles = JSON.parse(res.body)
-                - for post in parsed_articles do
-                    /- wp_client.make_post(post[i])
+                - 100.times do |i|
+                    - post = parsed_articles[i]
+                    /- wp_client.make_post(post)
                     - title = post['title']['redered']
                     - img = post['_links']['wp:attachment']['href']
                     = link_to URI.join(URI.encode(base_url),URI.encode(post[i]['slug'])), :class=>'mini-card', :title=>title, :tabindex=>'0' do
