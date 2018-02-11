@@ -24,7 +24,7 @@ class WpClient
     end
 
     def make_post(data)
-        system("slimrb -p -l #{data} template/post.html.slim > posts/#{data['slug']}.html")
+        system("slimrb --trace -p -l #{data} template/post.html.slim > posts/#{data['slug']}.html")
         status = $?
         if not status.success?
             raise "abnormal exit status (status=#{status.to_i} pid=#{status.pid})"
