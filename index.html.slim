@@ -81,8 +81,8 @@ html lang='ja'
                     /- wp_client.make_post(post)
                     - title = post['title']['redered']
                     - img = post['featured_media']
-                    = link_to URI.join(URI.encode(base_url),URI.encode(post['slug'])), :class=>'mini-card', :title=>title, :tabindex=>'0' do
-                        = image_tag img, :alt=>'eyecatch', :class=>'card-img'
+                    a.mini-card href=URI.join(URI.encode(base_url),URI.encode(post['slug'])), title=title, tabindex='0' do
+                        img.card-img src=img, alt='eyecatch'
                         div.card-meta
                             h2
                                 = title
