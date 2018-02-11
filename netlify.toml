@@ -1,2 +1,2 @@
 [build]
-    command = 'slimrb --trace -p template/index.html.slim > index.html'
+    command = 'slimrb --trace -p index.html.slim > index.html'
