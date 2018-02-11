@@ -1,4 +1,6 @@
 class WpClient
+    require 'faraday'
+
     def initialize
         @conn = Faraday.new(url: 'http://wkwkrnht.wp.xdomain.jp/') do |builder|
             builder.request :url_encoded
