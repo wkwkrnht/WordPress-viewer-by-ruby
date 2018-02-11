@@ -1,4 +1,5 @@
 - require_relative './lib/wordpress.rb'
+- require 'json'
 - wp_client = WpClient.new
 - path = 'wp-json/wp/v2/posts?per_page=100'
 - res  = wp_client.list_posts(path)

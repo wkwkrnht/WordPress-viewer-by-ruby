@@ -1,5 +1,6 @@
 class WpClient
     require 'faraday'
+    require 'json'
 
     def initialize
         @conn = Faraday.new(url: 'http://wkwkrnht.wp.xdomain.jp/') do |builder|
