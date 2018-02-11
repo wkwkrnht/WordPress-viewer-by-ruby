@@ -81,7 +81,8 @@ html lang='ja'
                     - slug = URI.encode(post['slug'])
                     - title = post['title']['rendered']
                     - img = post['featured_media']
-                    - system("slimrb --trace -p -l #{post} template/post.html.slim > posts/#{slug}.html")
+                    - post_json = JSON.generate(post)
+                    - system("slimrb --trace -p -l #{post_json} template/post.html.slim > posts/#{slug}.html")
                     a.mini-card href=URI.join(URI.encode(base_url),slug) title=title tabindex='0'
                         img.card-img src=img alt='eyecatch'
                         div.card-meta
