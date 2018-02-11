@@ -78,8 +78,8 @@ html lang='ja'
                 - parsed_articles = JSON.parse(res.body)
                 - parsed_articles.each do |post|
                     /- wp_client.make_post(post)
-                    - title = post['title']
-                    - img = post['_links']['wp:attachment']
+                    - title = post['title']['redered']
+                    - img = post['_links']['wp:attachment']['href']
                     = link_to URI.join(URI.encode(base_url),URI.encode(post['slug'])), :class=>'mini-card', :title=>title, :tabindex=>'0' do
                         = image_tag img, :alt=>'eyecatch', :class=>'card-img'
                         div.card-meta
