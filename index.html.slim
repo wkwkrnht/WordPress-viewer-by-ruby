@@ -1,5 +1,6 @@
 - require_relative './lib/wordpress.rb'
 - require 'json'
+- require 'tilt'
 - wp_client = WpClient.new
 - path = 'wp-json/wp/v2/posts?per_page=100'
 - res  = wp_client.list_posts(path)
@@ -72,6 +73,7 @@ html lang='ja'
                 | &copy;
                 = site_title
         main.card-list
+            - template = Tilt.new('template/post.html.slim')
             - total_pages.times do |n|
                 - n = n + 1
                 - now_path = "#{path}&page=#{n}"
@@ -82,7 +84,9 @@ html lang='ja'
                     - title = post['title']['rendered']
                     - img = post['featured_media']
                     - post_json = JSON.generate(post)
-                    - system("slimrb --trace -p -l #{post_json} ./template/post.html.slim > ../posts/#{slug}.html")
+                    - post_body = template.render(post_json)
+                    - File.open("./posts/#{slug}.html","w") do |text|
+                        - text.puts(post_body)
                     a.mini-card href=URI.join(URI.encode(base_url),slug) title=title tabindex='0'
                         img.card-img src=img alt='eyecatch'
                         div.card-meta
