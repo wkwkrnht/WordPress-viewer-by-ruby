@@ -80,8 +80,8 @@ html lang='ja'
                 - parsed_posts = JSON.parse(res.body)
                 - parsed_posts.each do |post|
                     - slug = URI.encode(post['slug'])
-                    - if slug.length > 255
-                        - slug = slug.slice(0,254)
+                    - if slug.length > 128
+                        - slug = slug.slice(0,127)
                     - file_name = Dir.pwd + "/posts/#{slug}.html"
                     - title = post['title']['rendered']
                     - img = post['featured_media']
