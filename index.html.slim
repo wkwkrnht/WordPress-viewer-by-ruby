@@ -31,7 +31,7 @@ html lang='ja'
                 - res = wp_client.list_posts(now_path)
                 - parsed_posts = JSON.parse(res.body)
                 - parsed_posts.each do |post|
-                    - slug = post['id']
+                    - slug = post['id'].to_s
                     - slug = './posts/' + slug + '.html'
                     - title = post['title']['rendered']
                     - img = post['featured_media']
