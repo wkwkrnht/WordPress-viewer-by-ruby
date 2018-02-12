@@ -1,5 +1,6 @@
 - require_relative '../lib/wordpress.rb'
 - require 'json'
+- locals = post_json
 - wp_client = WpClient.new
 - site_title = wp_client.site_meta('site_title')
 - description = wp_client.site_meta('description')
