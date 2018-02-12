@@ -34,10 +34,10 @@ html lang='ja'
                     - slug = post['slug']
                     - if slug.length > 16
                         - slug = slug.slice(0,15)
-                    - slug = URI.join('./posts/',URI.encode(slug)) + '.html'
+                    - slug = './posts/' + URI.encode(slug) + '.html'
                     - title = post['title']['rendered']
                     - img = post['featured_media']
-                    - post_body = Slim::Template.new('template/post.html.slim',pretty: true).render(PASS_data.new(post))
+                    - post_body = Slim::Template.new('template/post.html.slim').render(PASS_data.new(post))
                     - File.open(slug,"w") do |text|
                         - text.puts(post_body)
                     a.mini-card href= title=title tabindex='0'
