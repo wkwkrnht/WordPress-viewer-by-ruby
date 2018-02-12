@@ -79,9 +79,10 @@ html lang='ja'
                 - res = wp_client.list_posts(now_path)
                 - parsed_posts = JSON.parse(res.body)
                 - parsed_posts.each do |post|
-                    - slug = URI.encode(post['slug'])
-                    - if slug.length > 128
-                        - slug = slug.slice(0,127)
+                    - slug = post['slug']
+                    - if slug.length > 16
+                        - slug = slug.slice(0,15)
+                    - slug = URI.encode(slug)
                     - file_name = Dir.pwd + "/posts/#{slug}.html"
                     - title = post['title']['rendered']
                     - img = post['featured_media']
