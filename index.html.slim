@@ -38,7 +38,7 @@ html lang='ja'
                     - post_body = Slim::Template.new('template/post.html.slim').render(PASS_data.new(post))
                     - File.open(slug,"w") do |text|
                         - text.puts(post_body)
-                    a.mini-card href= title=title tabindex='0'
+                    a.mini-card href=slug title=title tabindex='0'
                         img.card-img src=img alt='eyecatch'
                         h2.card-meta
                             = title
