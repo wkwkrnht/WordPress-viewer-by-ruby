@@ -73,7 +73,6 @@ html lang='ja'
                 | &copy;
                 = site_title
         main.card-list
-            - template = Tilt.new('template/post.html.slim')
             - total_pages.times do |n|
                 - n = n + 1
                 - now_path = "#{path}&page=#{n}"
@@ -84,7 +83,7 @@ html lang='ja'
                     - title = post['title']['rendered']
                     - img = post['featured_media']
                     - post_json = JSON.generate(post)
-                    - post_body = template.render(Object.new, locals: post_json)
+                    - post_body = Slim::Template.new('template/post.html.slim',pretty: true,locals: post_json).render
                     - File.open("./posts/#{slug}.html","w") do |text|
                         - text.puts(post_body)
                     a.mini-card href=URI.join(URI.encode(base_url),slug) title=title tabindex='0'
