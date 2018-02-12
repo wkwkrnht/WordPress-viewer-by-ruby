@@ -5,7 +5,6 @@
 - path = 'wp-json/wp/v2/posts?per_page=100'
 - res  = wp_client.list_posts(path)
 - total_pages = res.headers['x-wp-totalpages'].to_i
-- base_url = 'https://festive-mestorf-30f7f7.netlify.com/'
 - site_title = wp_client.site_meta('site_title')
 - description = wp_client.site_meta('description')
 /- meta_img = data.site.icon || URI.join(base_url,URI.encode('/img/no-img/256x256.png'))
@@ -82,18 +81,13 @@ html lang='ja'
                     - slug = post['slug']
                     - if slug.length > 16
                         - slug = slug.slice(0,15)
-                    - slug = URI.encode(slug)
-                    - file_name = Dir.pwd + "/posts/#{slug}.html"
+                    - slug = URI.join('./posts/',URI.encode(slug)) + '.html'
                     - title = post['title']['rendered']
                     - img = post['featured_media']
-                    - post_json = JSON.generate(post)
                     - post_body = Slim::Template.new('template/post.html.slim',pretty: true).render(PASS_data.new(post))
-                    - File.open(file_name,"w") do |text|
+                    - File.open(slug,"w") do |text|
                         - text.puts(post_body)
-                    a.mini-card href=URI.join(URI.encode(base_url),slug) title=title tabindex='0'
+                    a.mini-card href= title=title tabindex='0'
                         img.card-img src=img alt='eyecatch'
-                        div.card-meta
-                            h2
-                                = title
-                            time
-                                = post['date']
+                        h2.card-meta
+                            = title
