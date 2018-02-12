@@ -83,8 +83,7 @@ html lang='ja'
                     - slug = URI.encode(post['slug'])
                     - title = post['title']['rendered']
                     - img = post['featured_media']
-                    - post_json = JSON.generate(post)
-                    - post_body = template.render(post_json)
+                    - post_body = template.render(post)
                     - File.open("./posts/#{slug}.html","w") do |text|
                         - text.puts(post_body)
                     a.mini-card href=URI.join(URI.encode(base_url),slug) title=title tabindex='0'
