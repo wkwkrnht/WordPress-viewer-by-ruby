@@ -3,7 +3,7 @@ class WpClient
     require 'json'
 
     def initialize
-        @post_dir = './post'
+        @post_dir = './posts'
         if Dir::exist?(@post_dir) == false
             Dir::mkdir(@post_dir)
         end
