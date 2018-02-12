@@ -26,3 +26,9 @@ class WpClient
         end
     end
 end
+
+class PASS_data
+    def initialize(data)
+        @locals = data
+    end
+end

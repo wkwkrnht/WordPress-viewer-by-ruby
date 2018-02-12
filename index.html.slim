@@ -83,7 +83,7 @@ html lang='ja'
                     - title = post['title']['rendered']
                     - img = post['featured_media']
                     - post_json = JSON.generate(post)
-                    - post_body = Slim::Template.new('template/post.html.slim',pretty: true,locals: post_json).render
+                    - post_body = Slim::Template.new('template/post.html.slim',pretty: true).render(PASS_data.new(post))
                     - File.open("./posts/#{slug}.html","w") do |text|
                         - text.puts(post_body)
                     a.mini-card href=URI.join(URI.encode(base_url),slug) title=title tabindex='0'
