@@ -4,7 +4,7 @@ class WpClient
 
     def initialize
         @post_dir = './post'
-        Dir::exist?(@post_dir) == false
+        if Dir::exist?(@post_dir) == false
             Dir::mkdir(@post_dir)
         end
         @conn = Faraday.new(url: 'http://wkwkrnht.wp.xdomain.jp/') do |builder|
