@@ -9,7 +9,6 @@ class WpClient
         end
         @conn = Faraday.new(url: 'http://wkwkrnht.wp.xdomain.jp/') do |builder|
             builder.request :url_encoded
-            builder.response :logger
             builder.adapter :net_http
         end
     end
@@ -28,6 +27,21 @@ class WpClient
         res = @conn.get do |req|
             req.url path
         end
+    end
+
+    def get_eyecaych_url(id)
+        res = @conn.get("wp-json/wp/v2/media?include=#{id}")
+        return res['source_url']
+    end
+
+    def get_author_name(id)
+        res = @conn.get("wp-json/wp/v2/users?include=#{id}")
+        return res['name']
+    end
+
+    def get_tag_name(id)
+        res = @conn.get("wp-json/wp/v2/tags?include=#{id}")
+        return res['name']
     end
 end
 
