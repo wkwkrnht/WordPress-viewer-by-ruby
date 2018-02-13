@@ -1,5 +1,4 @@
 require 'json'
-require 'slim'
 require 'tilt'
 
 post_body = Slim::Template.new('index.html.slim').render
