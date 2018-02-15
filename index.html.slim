@@ -40,6 +40,6 @@ html lang='ja'
                     - File.open(slug,"w") do |text|
                         - text.puts(post_body)
                     a.mini-card href=slug title=title tabindex='0'
-                        img.card-img src="#{img}" alt='eyecatch'
+                        img.card-img src=img alt='eyecatch'
                         h2.card-meta
                             = title
