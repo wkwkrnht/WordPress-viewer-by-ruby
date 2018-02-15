@@ -1,5 +1,5 @@
 require 'json'
-require 'tilt'
+require 'slim'
 
 post_body = Slim::Template.new('index.html.slim').render
 File.open('index.html',"w") do |text|
