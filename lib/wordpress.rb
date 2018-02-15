@@ -30,16 +30,19 @@ class WpClient
     end
 
     def get_eyecaych_url(id)
+        id = id.to_s
         res = @conn.get("wp-json/wp/v2/media?include=#{id}")
         return res['source_url']
     end
 
     def get_author_name(id)
+        id = id.to_s
         res = @conn.get("wp-json/wp/v2/users?include=#{id}")
         return res['name']
     end
 
     def get_tag_name(id)
+        id = id.to_s
         res = @conn.get("wp-json/wp/v2/tags?include=#{id}")
         return res['name']
     end

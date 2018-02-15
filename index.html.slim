@@ -34,7 +34,8 @@ html lang='ja'
                     - slug = post['id'].to_s
                     - slug = './posts/' + slug + '.html'
                     - title = post['title']['rendered']
-                    - img = wp_client.get_eyecaych_url(post['featured_media'])
+                    - img = post['featured_media']
+                    - img = wp_client.get_eyecaych_url(img)
                     - post_body = Slim::Template.new('template/post.html.slim').render(PASS_data.new(post))
                     - File.open(slug,"w") do |text|
                         - text.puts(post_body)
