@@ -43,6 +43,10 @@ class WpClient
         res = @conn.get("wp-json/wp/v2/tags?include=#{id}")
         return res['name']
     end
+
+    def get_tag_url(id)
+        return '/tag/' + id.to_s
+    end
 end
 
 class PASS_data
