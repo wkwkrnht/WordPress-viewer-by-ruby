@@ -7,7 +7,7 @@
 - date = @locals['date']
 - tags = @locals['_embedded']['wp:term'][1] #|| {'name' => 'undefined', 'id' => 'undefned'}
 - author = @locals['_embedded']['author'][0]['name']
-- if_eyecatch = @locals['_embedded']['wp:featuredmedia'][0]
+- if_eyecatch = @locals['_embedded']['wp:featuredmedia']
 - if if_img == nil
     - eyecatch = '../lib/no-image_full.png'
 - else
