@@ -11,7 +11,7 @@
 - if if_img == nil
     - eyecatch = '../lib/no-image_full.png'
 - else
-    - eyecatch = if_eyecatch['source_url']
+    - eyecatch = if_eyecatch[0]['source_url']
 - description = content.to_s.slice(0,99) || wp_client.site_meta('description')
 doctype html
 html lang='ja'
