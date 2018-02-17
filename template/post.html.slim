@@ -6,8 +6,12 @@
 - content = @locals['content']['rendered']
 - date = @locals['date']
 - tags = @locals['_embedded']['wp:term'][1] #|| {'name' => 'undefined', 'id' => 'undefned'}
-- author = @locals['_embedded']['author']['name']
-- eyecatch = @locals['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] || '../lib/no-image_full.png'
+- author = @locals['_embedded']['author'][0]['name']
+- if_eyecatch = @locals['_embedded']['wp:featuredmedia'][0]
+- if if_img == nil
+    - eyecatch = '../lib/no-image_full.png'
+- else
+    - eyecatch = if_eyecatch['source_url']
 - description = content.to_s.slice(0,99) || wp_client.site_meta('description')
 doctype html
 html lang='ja'
