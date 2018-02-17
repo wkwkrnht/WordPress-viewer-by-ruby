@@ -33,7 +33,7 @@ html lang='ja'
                 - slug = post['id'].to_s
                 - slug = './posts/' + slug + '.html'
                 - title = post['title']['rendered']
-                - img = post['_embedded']['wp:featuredmedia'][0]['source_url'] || './lib/no-image_full.png'
+                - img = post['_embedded']['wp:featuredmedia']['source_url'] || './lib/no-image_full.png'
                 - post_body = Slim::Template.new('template/post.html.slim').render(PASS_data.new(post))
                 - File.open(slug,"w") do |text|
                     - text.puts(post_body)
