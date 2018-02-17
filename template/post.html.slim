@@ -5,7 +5,7 @@
 - title = @locals['title']['rendered']
 - content = @locals['content']['rendered']
 - date = @locals['date']
-- tags = @locals['_embedded']['wp:term'] #|| {'name' => 'undefined', 'id' => 'undefned'}
+/- tags = @locals['_embedded']['wp:term'] #|| {'name' => 'undefined', 'id' => 'undefned'}
 - author = @locals['_embedded']['author']['name']
 - eyecatch = @locals['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] || '../lib/no-image_full.png'
 - description = content.to_s.slice(0,99) || wp_client.site_meta('description')
@@ -30,7 +30,7 @@ html lang='ja'
                             = date
                         span.article-author
                             = author
-                    ul.tag-list
+                    /ul.tag-list
                         - tags.each do |tag|
                             - id = tag.id
                             li

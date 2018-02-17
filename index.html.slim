@@ -2,10 +2,14 @@
 - require 'json'
 - require 'tilt'
 - wp_client = WpClient.new
-- total_pages  = wp_client.list_posts('wp-json/wp/v2/posts')
-- total_pages = total_pages.headers['x-wp-totalpages'].to_i
 - site_title = wp_client.site_meta('site_title')
 - description = wp_client.site_meta('description')
+- total_pages = wp_client.list_posts('wp-json/wp/v2/posts')
+- total_pages = total_pages.headers['x-wp-totalpages'].to_i
+- posts_number = total_pages * 100
+- now_path = "wp-json/wp/v2/posts?_embed&per_page=#{posts_number}"
+- posts = wp_client.list_posts(now_path)
+- parsed_posts = JSON.parse(posts.body)
 doctype html
 html lang='ja'
     head
@@ -24,20 +28,15 @@ html lang='ja'
                 | &copy;
                 = site_title
         main.card-list
-            - total_pages.times do |n|
-                - n = n + 1
-                - now_path = "wp-json/wp/v2/posts?_embed&per_page=100&page=#{n}"
-                - res = wp_client.list_posts(now_path)
-                - parsed_posts = JSON.parse(res.body)
-                - parsed_posts.each do |post|
-                    - slug = post['id'].to_s
-                    - slug = './posts/' + slug + '.html'
-                    - title = post['title']['rendered']
-                    - img = post['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] || './lib/no-image_full.png'
-                    - post_body = Slim::Template.new('template/post.html.slim').render(PASS_data.new(post))
-                    - File.open(slug,"w") do |text|
-                        - text.puts(post_body)
-                    a.mini-card href=slug title=title tabindex='0'
-                        img.card-img src=img alt='eyecatch'
-                        h2.card-meta
-                            = title
+            - parsed_posts.each do |post|
+                - slug = post['id'].to_s
+                - slug = './posts/' + slug + '.html'
+                - title = post['title']['rendered']
+                - img = post['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] || './lib/no-image_full.png'
+                - post_body = Slim::Template.new('template/post.html.slim').render(PASS_data.new(post))
+                - File.open(slug,"w") do |text|
+                    - text.puts(post_body)
+                a.mini-card href=slug title=title tabindex='0'
+                    img.card-img src=img alt='eyecatch'
+                    h2.card-meta
+                        = title
