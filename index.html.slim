@@ -2,9 +2,8 @@
 - require 'json'
 - require 'tilt'
 - wp_client = WpClient.new
-- path = 'wp-json/wp/v2/posts?per_page=100'
-- res  = wp_client.list_posts(path)
-- total_pages = res.headers['x-wp-totalpages'].to_i
+- total_pages  = wp_client.list_posts('wp-json/wp/v2/posts')
+- total_pages = total_pages.headers['x-wp-totalpages'].to_i
 - site_title = wp_client.site_meta('site_title')
 - description = wp_client.site_meta('description')
 doctype html
@@ -27,15 +26,14 @@ html lang='ja'
         main.card-list
             - total_pages.times do |n|
                 - n = n + 1
-                - now_path = "#{path}&page=#{n}"
+                - now_path = "wp-json/wp/v2/posts?_embed&per_page=100&page=#{n}"
                 - res = wp_client.list_posts(now_path)
                 - parsed_posts = JSON.parse(res.body)
                 - parsed_posts.each do |post|
                     - slug = post['id'].to_s
                     - slug = './posts/' + slug + '.html'
                     - title = post['title']['rendered']
-                    - img = post['featured_media']
-                    - img = wp_client.get_eyecaych_url(img)
+                    - img = post['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] || './lib/no-image_full.png'
                     - post_body = Slim::Template.new('template/post.html.slim').render(PASS_data.new(post))
                     - File.open(slug,"w") do |text|
                         - text.puts(post_body)

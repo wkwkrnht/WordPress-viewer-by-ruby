@@ -5,9 +5,9 @@
 - title = @locals['title']['rendered']
 - content = @locals['content']['rendered']
 - date = @locals['date']
-- tags = @locals['tags']
-- author = @locals['author']
-- eyecatch = wp_client.get_eyecaych_url(@locals['featured_media'])
+- tags = @locals['wp:term'][1]
+- author = @locals['_embedded']['author']['name']
+- eyecatch = @locals['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] || '../lib/no-image_full.png'
 - description = content.to_s.slice(0,99) || wp_client.site_meta('description')
 doctype html
 html lang='ja'
@@ -30,6 +30,12 @@ html lang='ja'
                             = date
                         span.article-author
                             = author
+                    ul.tag-list
+                        - tags.each do |tag|
+                            - id = tag.id
+                            li
+                                a href="../tags/#{id}"
+                                    = tag.name
             .article-main role='main'
                 == content
             footer.article-footer
