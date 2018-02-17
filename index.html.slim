@@ -34,7 +34,7 @@ html lang='ja'
                 - slug = './posts/' + slug + '.html'
                 - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
-                - if if_img.blank?
+                - if if_img == nil
                     - img = './lib/no-image_full.png'
                 - else
                     - img = if_img['source_url']
