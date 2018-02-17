@@ -24,15 +24,7 @@ class WpClient
     end
 
     def list_posts(path)
-        res = @conn.get do |req|
-            req.url path
-        end
-    end
-
-    def get_author_name(id)
-        id = id.to_s
-        res = @conn.get("wp-json/wp/v2/users?include=#{id}")
-        return res['name']
+        return @conn.get(path)
     end
 end
 
