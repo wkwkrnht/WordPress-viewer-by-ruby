@@ -1,0 +1,17 @@
+.card-list{
+    align-content:space-around;
+    align-items:baseline;
+    display:flex;
+    flex-flow:row wrap;
+    justify-content:space-evenly;
+}
+
+.article-card{
+    .card-img,.card-title{
+        position:absolute;
+        top:0;
+    }
+    height:30vmax;
+    position:relative;
+    width:30vmax;
+}

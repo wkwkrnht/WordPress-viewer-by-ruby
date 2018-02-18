@@ -10,7 +10,7 @@
 - author = @locals['_embedded']['author'][0]['name']
 - if_eyecatch = @locals['_embedded']['wp:featuredmedia']
 - if if_eyecatch == nil
-    - eyecatch = '../lib/no-image_full.png'
+    - eyecatch = '../lib/no-img/full.png'
 - else
     - eyecatch = if_eyecatch[0]['source_url']
 doctype html
@@ -25,8 +25,11 @@ html lang='ja'
             = title
         scss:
             .tag-list{
-                ::before{
+                &::before{
                     content:"Tag";
+                }
+                & li{
+                    display:inline-block;
                 }
             }
     body
