@@ -19,7 +19,8 @@ html lang='ja'
         meta name='viewport' content='width=device-width initial-scale=1'
         meta name='renderer' content='webkit'
         meta name='description' content=description
-        title = site_title
+        title
+            = site_title
     body
         header.site-header
             h1.site-title
@@ -39,8 +40,8 @@ html lang='ja'
                 - else
                     - img = if_img[0]['media_details']['sizes']
                     - img = img.select { |k, v| k.include?('-crop') }
-                    - img_keys = img.keys
-                    - img_key = img_keys[1]
+                    - img_key = img.keys
+                    - img_key = img_key[0]
                     - img = img[img_key]['source_url']
                 - post_body = Slim::Template.new('template/post.html.slim').render(PASS_data.new(post))
                 - File.open(slug,"w") do |text|

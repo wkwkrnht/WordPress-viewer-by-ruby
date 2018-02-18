@@ -21,10 +21,13 @@ html lang='ja'
         meta name='viewport' content='width=device-width initial-scale=1'
         meta name='renderer' content='webkit'
         meta name='description' content=description
-        title = title
-        css:
-            .tag-list::before{
-                content:"Tag";
+        title
+            = title
+        scss:
+            .tag-list{
+                ::before{
+                    content:"Tag";
+                }
             }
     body
         article
