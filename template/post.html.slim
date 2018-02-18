@@ -1,6 +1,6 @@
 - require_relative '../lib/wordpress.rb'
 - require 'json'
-- setting = File.open('/prefrence.json') do |file|
+- setting = File.open('../prefrence.json') do |file|
     - JSON.load(file)
 - first_post_year = setting['first_post_year']
 - wp_client = WpClient.new
@@ -13,7 +13,7 @@
 - author = @locals['_embedded']['author'][0]['name']
 - if_eyecatch = @locals['_embedded']['wp:featuredmedia']
 - if if_eyecatch == nil
-    - eyecatch = '/lib/no-img/full.svg'
+    - eyecatch = '../lib/no-img/full.svg'
 - else
     - eyecatch = if_eyecatch[0]['source_url']
 doctype html

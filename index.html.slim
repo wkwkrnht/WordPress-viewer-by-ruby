@@ -1,7 +1,7 @@
 - require_relative './lib/wordpress.rb'
 - require 'json'
 - require 'tilt'
-- setting = File.open('/prefrence.json') do |file|
+- setting = File.open('./prefrence.json') do |file|
     - JSON.load(file)
 - first_post_year = setting['first_post_year']
 - wp_client = WpClient.new
@@ -38,11 +38,11 @@ html lang='ja'
         main.card-list
             - parsed_posts.each do |post|
                 - slug = post['id'].to_s
-                - slug = '/posts/' + slug + '.html'
+                - slug = './posts/' + slug + '.html'
                 - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
                 - if if_img == nil
-                    - img = '/lib/no-img/crop.svg'
+                    - img = './lib/no-img/crop.svg'
                 - else
                     - img = if_img[0]['media_details']['sizes']
                     - img = img.select { |k, v| k.include?('-crop') }
