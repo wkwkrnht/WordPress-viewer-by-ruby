@@ -1,6 +1,6 @@
 - require_relative '../lib/wordpress.rb'
 - require 'json'
-- setting = File.open('../prefrence.json') do |file|
+- setting = File.open('../setting/main.json') do |file|
     - JSON.load(file)
 - first_post_year = setting['first_post_year']
 - wp_client = WpClient.new
