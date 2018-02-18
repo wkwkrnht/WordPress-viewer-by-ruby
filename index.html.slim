@@ -36,7 +36,7 @@ html lang='ja'
                 - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
                 - if if_img == nil
-                    - img = './lib/no-image_crop.svg'
+                    - img = './lib/no-img/crop.svg'
                 - else
                     - img = if_img[0]['media_details']['sizes']
                     - img = img.select { |k, v| k.include?('-crop') }

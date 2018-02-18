@@ -1,6 +1,7 @@
-require 'bundler'
-Bundler.require
+#require 'bundler'
+#Bundler.require
 
+require 'rubygems'
 require 'json'
 require 'slim'
 
