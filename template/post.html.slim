@@ -1,6 +1,7 @@
 - require_relative '../lib/wordpress.rb'
 - require 'json'
 - setting = JSON.load('../prefrence.json')
+- first_post_year = setting['first_post_year']
 - wp_client = WpClient.new
 - site_title = wp_client.site_meta('site_title')
 - title = @locals['title']['rendered']
@@ -25,7 +26,7 @@ html lang='ja'
         title
             = title
         scss:
-            @import './lib/style/normalize.scss'
+            @import '../lib/style/normalize'
             .tag-list{
                 &::before{
                     content:"Tag";
@@ -115,7 +116,7 @@ html lang='ja'
                         a href='javascript:void(0);' onClick='window.print();return false;'
                             span class='icon icon-print'
                 a.copyright href='/' title='Go to home'
-                    /= first_post_year
+                    = first_post_year
                     | &copy;
                     = site_title
         /javascript:

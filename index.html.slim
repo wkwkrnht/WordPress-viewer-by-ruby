@@ -2,6 +2,7 @@
 - require 'json'
 - require 'tilt'
 - setting = JSON.load('./prefrence.json')
+- first_post_year = setting['first_post_year']
 - wp_client = WpClient.new
 - total_pages = wp_client.list_posts('wp-json/wp/v2/posts?per_page=100')
 - total_pages = total_pages.headers['x-wp-totalpages'].to_i
@@ -23,14 +24,14 @@ html lang='ja'
         title
             = site_title
         scss:
-            @import './lib/style/normalize.scss'
-            @import './lib/style/card.scss'
+            @import './lib/style/normalize'
+            @import './lib/style/card'
     body
         header.site-header
             h1.site-title
                 = site_title
             span.copyright
-                /= first_post_year
+                = first_post_year
                 | &copy;
                 = site_title
         main.card-list
