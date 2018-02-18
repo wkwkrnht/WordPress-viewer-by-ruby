@@ -38,9 +38,9 @@ html lang='ja'
                     - img = './lib/no-image_crop.svg'
                 - else
                     - img = if_img[0]['media_details']['sizes']
-                    - img = img.select { |k, v| k.include?('crop') }
-                    - img_key = img.keys
-                    - img_key = img_key[0]
+                    - img = img.select { |k, v| k.include?('-crop') }
+                    - img_keys = img.keys
+                    - img_key = img_keys[1]
                     - img = img[img_key]['source_url']
                 - post_body = Slim::Template.new('template/post.html.slim').render(PASS_data.new(post))
                 - File.open(slug,"w") do |text|
