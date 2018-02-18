@@ -1,4 +1,4 @@
-- require_relative './lib/wordpress.rb'
+- require_relative '../lib/wordpress.rb'
 - require 'json'
 - require 'slim'
 /- setting = File.open('./setting/main.json', "r") do |file|
@@ -23,29 +23,25 @@ html lang='ja'
     body
         header.site-header
             h1.site-title
-                /= site_title
+                = site_title
             span.copyright
-                = first_post_year
+                /= first_post_year
                 | &copy;
                 = site_title
         main.card-list
             - @locals.each do |post|
                 - slug = post['id'].to_s
-                - slug = './posts/' + slug + '.html'
                 - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
                 - if if_img == nil
-                    - img = './lib/no-img/crop.svg'
+                    - img = '/lib/no-img/crop.svg'
                 - else
                     - img = if_img[0]['media_details']['sizes']
                     - img = img.select { |k, v| k.include?('-crop') }
                     - img_key = img.keys
                     - img_key = img_key[0]
                     - img = img[img_key]['source_url']
-                - post_body = Slim::Template.new('../template/post.html.slim').render(PASS_data.new(post))
-                - File.open(slug,"w") do |text|
-                    - text.puts(post_body)
-                a.article-card href=slug title=title tabindex='0'
+                a.article-card href="/posts/#{id}.html" title=title tabindex='0'
                     img.card-img src=img alt='eyecatch'
                     h2.card-title
                         = title

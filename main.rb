@@ -21,7 +21,6 @@ class MAIN
         File.open('index.html',"w") do |text|
             text.puts(body)
         end
-        exit 0
     end
 
     def make_tag_index
@@ -40,11 +39,10 @@ class MAIN
             posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{id}&per_page=#{posts_number}")
             parsed_posts = JSON.parse(posts.body)
             body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(parsed_posts))
-            File.open("./tags/#{id}.html","w") do |text|
+            File.open("tags/#{id}.html","w") do |text|
                 text.puts(body)
             end
         end
-        exit 0
     end
 end
 
