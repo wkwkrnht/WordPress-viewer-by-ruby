@@ -27,7 +27,7 @@ class MAIN
         require_relative './lib/wordpress.rb'
         wp_client = WpClient.new
         tags = wp_client.list_posts('wp-json/wp/v2/tags?per_page=100')
-        tags_page_number = tags_data.headers['x-wp-totalpages'].to_i
+        tags_page_number = tags.headers['x-wp-totalpages'].to_i
         tags_page_number = tags_page_number * 100
         tags = wp_client.list_posts("wp-json/wp/v2/tags?per_page=#{tags_page_number}")
         parsed_datas = JSON.parse(tags.body)
