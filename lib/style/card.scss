@@ -3,7 +3,7 @@
     align-items:baseline;
     display:flex;
     flex-flow:row wrap;
-    justify-content:space-evenly;
+    justify-content:space-around;
 }
 
 .article-card{
@@ -14,4 +14,9 @@
     height:30vmax;
     position:relative;
     width:30vmax;
+}
+
+img[src$=".svg"],object[src$=".svg"]{
+  max-width:100%;
+  height:auto;
 }
