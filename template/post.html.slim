@@ -36,10 +36,10 @@ html lang='ja'
                             = author
                     ul.tag-list
                         - tags.each do |tag|
-                            - id = tag.id
+                            - id = tag['id'].to_s
                             li
                                 a href="../tags/#{id}"
-                                    = tag.name
+                                    = tag['name']
             .article-main role='main'
                 == content
             footer.article-footer
