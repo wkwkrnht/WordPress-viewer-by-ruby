@@ -3,10 +3,6 @@ class WpClient
     require 'json'
 
     def initialize
-        @post_dir = './posts'
-        if Dir::exist?(@post_dir) == false
-            Dir::mkdir(@post_dir)
-        end
         @conn = Faraday.new(url: 'http://wkwkrnht.wp.xdomain.jp/') do |builder|
             builder.request :url_encoded
             builder.adapter :net_http

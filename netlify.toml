@@ -1,3 +1,2 @@
 [build]
-    #command = 'slimrb --trace index.html.slim > index.html'
     command = 'ruby main.rb'
