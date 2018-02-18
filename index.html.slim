@@ -1,8 +1,8 @@
 - require_relative './lib/wordpress.rb'
 - require 'json'
 - require 'tilt'
-- File.open('./prefrence.json') do |file|
-    - setting = JSON.load(file)
+- setting = File.open('./prefrence.json') do |file|
+    - JSON.load(file)
 - first_post_year = setting['first_post_year']
 - wp_client = WpClient.new
 - total_pages = wp_client.list_posts('wp-json/wp/v2/posts?per_page=100')
