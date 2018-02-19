@@ -29,14 +29,14 @@ class MAIN
         tags = wp_client.list_posts('wp-json/wp/v2/tags?per_page=100')
         total_tags = tags.headers['x-wp-totalpages'].to_i
         total_tags = total_tags * 100
-        tags = wp_client.list_posts("wp-json/wp/v2/tags?per_page=#{tags_page_number}")
+        tags = wp_client.list_posts("wp-json/wp/v2/tags?per_page=#{total_tags}")
         tags = JSON.parse(tags.body)
         tags.each do |tag|
             id = tag['id'].to_s
             posts = wp_client.list_posts("wp-json/wp/v2/posts?tags=#{id}&per_page=100")
             total_posts = posts.headers['x-wp-totalpages'].to_i
             total_posts = total_posts * 100
-            posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{id}&per_page=#{posts_number}")
+            posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{id}&per_page=#{total_posts}")
             posts = JSON.parse(posts.body)
             body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(posts))
             File.open("tags/#{id}.html","w") do |text|
