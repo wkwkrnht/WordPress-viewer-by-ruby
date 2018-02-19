@@ -7,7 +7,7 @@
 - wp_client = WpClient.new
 - total_posts = wp_client.list_posts('wp-json/wp/v2/posts?per_page=100')
 - total_posts = total_posts.headers['x-wp-totalpages'].to_i
-- total_posts = 100 * total_pages
+- total_posts = 100 * total_posts
 - total_posts = total_posts.to_s
 - path = 'wp-json/wp/v2/posts?_embed&per_page=' + total_posts
 - site_title = wp_client.site_meta('site_title')
