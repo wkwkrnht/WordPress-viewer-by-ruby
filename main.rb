@@ -30,15 +30,15 @@ class MAIN
         tags_page_number = tags.headers['x-wp-totalpages'].to_i
         tags_page_number = tags_page_number * 100
         tags = wp_client.list_posts("wp-json/wp/v2/tags?per_page=#{tags_page_number}")
-        parsed_datas = JSON.parse(tags.body)
-        parsed_datas.each do |tag|
-            id = tag['id']
+        tags = JSON.parse(tags.body)
+        tags.each do |tag|
+            id = tag['id'].to_s
             posts = wp_client.list_posts("wp-json/wp/v2/posts?tags=#{id}&per_page=100")
             posts_number = posts.headers['x-wp-totalpages'].to_i
             posts_number = posts_number * 100
             posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{id}&per_page=#{posts_number}")
-            parsed_posts = JSON.parse(posts.body)
-            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(parsed_posts))
+            posts = JSON.parse(posts.body)
+            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(posts))
             File.open("tags/#{id}.html","w") do |text|
                 text.puts(body)
             end
