@@ -26,9 +26,8 @@ class MAIN
     def make_tag_page
         require_relative './lib/wordpress.rb'
         wp_client = WpClient.new
-        tags = wp_client.list_posts('wp-json/wp/v2/tags?per_page=100')
-        total_tags = tags.headers['x-wp-totalpages'].to_i
-        total_tags = total_tags * 100
+        tags = wp_client.list_posts('wp-json/wp/v2/tags?per_page=1')
+        total_tags = tags.headers['x-wp-totalpages']
         tags = wp_client.list_posts("wp-json/wp/v2/tags?per_page=#{total_tags}")
         tags = JSON.parse(tags.body)
         tags.each_with_index do |tag, i|

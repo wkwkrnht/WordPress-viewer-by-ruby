@@ -32,8 +32,9 @@ html lang='ja'
                 = site_title
         main.card-list
             - posts.each do |post|
-                - slug = post.dig('id').to_s
-                - title = post.dig('title','rendered')
+                - post = post[0]
+                - slug = post['id'].to_s
+                - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
                 - if if_img == nil
                     - img = '/lib/no-img/crop.svg'
