@@ -16,14 +16,14 @@ class MAIN
         end
     end
 
-    def make_index
+    def make_index_page
         body = Slim::Template.new('index.html.slim').render
         File.open('index.html',"w") do |text|
             text.puts(body)
         end
     end
 
-    def make_tag_index
+    def make_tag_page
         require_relative './lib/wordpress.rb'
         wp_client = WpClient.new
         tags = wp_client.list_posts('wp-json/wp/v2/tags?per_page=100')
@@ -45,5 +45,5 @@ class MAIN
 end
 
 main = MAIN.new
-main.make_index
-#main.make_tag_index
+main.make_index_page
+main.make_tag_page
