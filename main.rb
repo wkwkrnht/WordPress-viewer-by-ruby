@@ -36,9 +36,8 @@ class MAIN
             posts = wp_client.list_posts("wp-json/wp/v2/posts?tags=#{id}&per_page=100")
             total_posts = posts.headers['x-wp-totalpages'].to_i
             total_posts = total_posts * 100
-            posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{id}&per_page=#{total_posts}")
-            posts = JSON.parse(posts.body)
-            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(posts))
+            path = "wp-json/wp/v2/posts?_embed&tags=#{id}&per_page=#{total_posts}"
+            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(path))
             File.open("tags/#{id}.html","w") do |text|
                 text.puts(body)
             end
