@@ -29,9 +29,7 @@ class WpClient
         total = @conn.get(total_path)
         total = total.headers['x-wp-totalpages']
         path = "wp-json/wp/v2/posts?per_page=#{total}#{path}"
-        post = @conn.get(path)
-        post = JSON.parse(post.body)
-        return post
+        return @conn.get(path)
     end
 end
 
