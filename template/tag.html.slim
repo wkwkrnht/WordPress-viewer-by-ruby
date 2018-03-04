@@ -31,10 +31,10 @@ html lang='ja'
                 | &copy;
                 = site_title
         main.card-list
-            - posts.each do |post|
-                - slug = post['id'].to_s
-                - title = post['title']['rendered']
-                - if_img = post['_embedded']['wp:featuredmedia']
+            - posts.each_with_index do |post, i|
+                - slug = post[i]['id'].to_s
+                - title = post[i]['title']['rendered']
+                - if_img = post[i]['_embedded']['wp:featuredmedia']
                 - if if_img == nil
                     - img = '/lib/no-img/crop.svg'
                 - else
