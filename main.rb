@@ -47,4 +47,4 @@ end
 
 main = MAIN.new
 main.make_index
-main.make_tag_index
+#main.make_tag_index

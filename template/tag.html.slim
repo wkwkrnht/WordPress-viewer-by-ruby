@@ -1,7 +1,7 @@
 - require_relative '../lib/wordpress.rb'
 - require 'json'
 - require 'slim'
-/- setting = File.open('./setting/main.json', "r") do |file|
+/- setting = File.open('../setting/main.json', "r") do |file|
     - JSON.load(file)
 /- first_post_year = setting['first_post_year']
 - wp_client = WpClient.new
@@ -19,7 +19,7 @@ html lang='ja'
         meta name='description' content=description
         title
             = site_title
-        /scss:
+        scss:
             @import '../lib/style/normalize';
             @import '../lib/style/card';
     body
@@ -31,9 +31,9 @@ html lang='ja'
                 | &copy;
                 = site_title
         main.card-list
-            - posts.each_with_index do |post, i|
-                - slug = post[i]['id'].to_s
-                - title = post[i]['title']['rendered']
+            - posts.each do |post|
+                - slug = post['id'].to_s
+                - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
                 - if if_img == nil
                     - img = '/lib/no-img/crop.svg'
