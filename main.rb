@@ -31,6 +31,7 @@ class MAIN
         total_tags = total_tags * 100
         tags = wp_client.list_posts("wp-json/wp/v2/tags?per_page=#{total_tags}")
         tags = JSON.parse(tags.body)
+        tags = tags[0]
         tags.each do |tag|
             id = tag['id'].to_s
             posts = wp_client.list_posts("wp-json/wp/v2/posts?tags=#{id}&per_page=100")
