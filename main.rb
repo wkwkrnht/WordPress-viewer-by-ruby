@@ -16,27 +16,23 @@ class MAIN
         end
     end
 
-    def make_index
+    def make_index_page
         body = Slim::Template.new('index.html.slim').render
         File.open('index.html',"w") do |text|
             text.puts(body)
         end
     end
 
-    def make_tag_index
+    def make_tag_page
         require_relative './lib/wordpress.rb'
         wp_client = WpClient.new
-        tags = wp_client.list_posts('wp-json/wp/v2/tags?per_page=100')
-        total_tags = tags.headers['x-wp-totalpages'].to_i
-        total_tags = total_tags * 100
-        tags = wp_client.list_posts("wp-json/wp/v2/tags?per_page=#{total_tags}")
+        tags = wp_client.get_data('wp-json/wp/v2/tags?per_page=1')
+        total_tags = tags.headers['x-wp-totalpages']
+        tags = wp_client.get_data("wp-json/wp/v2/tags?per_page=#{total_tags}")
         tags = JSON.parse(tags.body)
         tags.each_with_index do |tag, i|
             id = tag[i]['id'].to_s
-            posts = wp_client.list_posts("wp-json/wp/v2/posts?tags=#{id}&per_page=1")
-            total_posts = posts.headers['x-wp-totalpages']
-            path = "wp-json/wp/v2/posts?_embed&tags=#{id}&per_page=#{total_posts}"
-            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(path))
+            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(id))
             File.open("tags/#{id}.html","w") do |text|
                 text.puts(body)
             end
@@ -45,5 +41,5 @@ class MAIN
 end
 
 main = MAIN.new
-main.make_index
-#main.make_tag_index
+main.make_index_page
+#main.make_tag_page
