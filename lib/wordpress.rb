@@ -23,13 +23,13 @@ class WpClient
         return @conn.get(path)
     end
 
-    def list_posts(path = '')
+    def list_posts(path)
         path = path.to_s
         total_path = 'wp-json/wp/v2/posts?per_page=1' + path
-        total = @conn.get(total_path)
+        total = get_data(total_path)
         total = total.headers['x-wp-totalpages']
         now_path = "wp-json/wp/v2/posts?per_page=#{total}" + path
-        post = @conn.get(now_path)
+        post = get_data(now_path)
         post = JSON.parse(post.body)
         return post
     end
