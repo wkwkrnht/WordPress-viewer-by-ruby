@@ -36,7 +36,8 @@ html lang='ja'
                 = site_title
         main.card-list
             - posts.each_with_index do |post, i|
-                - slug = post[0]['id']
+                - p post
+                - slug = post['id']
                 - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
                 - if if_img == nil
