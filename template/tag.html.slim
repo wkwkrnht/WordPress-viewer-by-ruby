@@ -5,13 +5,13 @@
     - JSON.load(file)
 /- first_post_year = setting['first_post_year']
 - tag = @locals
+- tag = tag.to_s
 - wp_client = WpClient.new
 - site_title = wp_client.site_meta('site_title')
 - description = wp_client.site_meta('description')
-- total_posts = wp_client.list_posts("wp-json/wp/v2/posts?tags=#{tag}&per_page=1")
+- total_posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{tag}&per_page=1")
 - total_posts = total_posts.headers['x-wp-totalpages']
-- path = "wp-json/wp/v2/posts?_embed&tags=#{tag}&per_page=#{total_posts}"
-- posts = wp_client.list_posts(path)
+- posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{tag}&per_page=#{total_posts}")
 - posts = JSON.parse(posts.body)
 doctype html
 html lang='ja'
@@ -36,7 +36,6 @@ html lang='ja'
                 = site_title
         main.card-list
             - posts.each_with_index do |post, i|
-                - p post
                 - slug = post['id']
                 - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
