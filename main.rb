@@ -30,8 +30,9 @@ class MAIN
         total_tags = tags.headers['x-wp-totalpages']
         tags = wp_client.list_posts("wp-json/wp/v2/tags?per_page=#{total_tags}")
         tags = JSON.parse(tags.body)
-        tags.each_with_index do |tag, i|
-            id = tag[i]['id'].to_s
+        tags.each do |tag|
+            id = tag['id']
+            id = id.to_s
             body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(id))
             File.open("tags/#{id}.html","w") do |text|
                 text.puts(body)
