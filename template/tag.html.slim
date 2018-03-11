@@ -32,7 +32,7 @@ html lang='ja'
                 = site_title
         main.card-list
             - posts.each do |post|
-                - slug = post['id']
+                - slug = post[:id]
                 - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
                 - if if_img == nil
