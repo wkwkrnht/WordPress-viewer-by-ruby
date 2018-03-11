@@ -32,10 +32,7 @@ class MAIN
         tags = JSON.parse(tags.body)
         tags.each_with_index do |tag, i|
             id = tag[i]['id'].to_s
-            total_posts = wp_client.list_posts("wp-json/wp/v2/posts?tags=#{id}&per_page=1")
-            total_posts = total_posts.headers['x-wp-totalpages']
-            path = "wp-json/wp/v2/posts?_embed&tags=#{id}&per_page=#{total_posts}"
-            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(path))
+            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(id))
             File.open("tags/#{id}.html","w") do |text|
                 text.puts(body)
             end
