@@ -11,8 +11,8 @@
 - description = wp_client.site_meta('description')
 - total_posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{tag}")
 - total_posts = total_posts.headers['x-wp-total']
-- total_posts = total_posts.to_s
-- posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{tag}&per_page=#{total_posts}")
+- total_posts = total_posts.to_i
+- posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{tag}")
 - posts = JSON.parse(posts.body)
 doctype html
 html lang='ja'
@@ -36,8 +36,8 @@ html lang='ja'
                 | &copy;
                 = site_title
         main.card-list
-            - p posts
-            /- posts.each_with_index do |post, i|
+            /- p posts
+            - posts.each do |post|
                 - slug = post['id']
                 - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
