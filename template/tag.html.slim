@@ -9,7 +9,6 @@
 - description = wp_client.site_meta('description')
 - posts = wp_client.list_posts(@locals)
 - posts = JSON.parse(posts.body)
-- posts = posts[0]
 doctype html
 html lang='ja'
     head
@@ -44,7 +43,7 @@ html lang='ja'
                     - img_key = img.keys
                     - img_key = img_key[0]
                     - img = img[img_key]['source_url']
-                a.article-card href="/posts/#{id}.html" title=title tabindex='0'
+                a.article-card href="/posts/#{slug}.html" title=title tabindex='0'
                     img.card-img src=img alt='eyecatch'
                     h2.card-title
                         = title
