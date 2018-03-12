@@ -19,7 +19,7 @@ class WpClient
         end
     end
 
-    def list_posts(path)
+    def get_data(path)
         return @conn.get(path)
     end
 end
