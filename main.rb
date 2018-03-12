@@ -26,15 +26,20 @@ class MAIN
     def make_tag_page
         require_relative './lib/wordpress.rb'
         wp_client = WpClient.new
-        tags = wp_client.list_posts('wp-json/wp/v2/tags?per_page=1')
-        total_tags = tags.headers['x-wp-total']
-        total_tags = total_tags.to_s
+        site_title = wp_client.site_meta('site_title')
+        description = wp_client.site_meta('description')
+        total_tags = wp_client.list_posts('wp-json/wp/v2/tags')
+        total_tags = total_tags.headers['x-wp-total'].to_s
         tags = wp_client.list_posts("wp-json/wp/v2/tags?per_page=#{total_tags}")
         tags = JSON.parse(tags.body)
         tags.each do |tag|
-            id = tag['id']
-            id = id.to_s
-            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(id))
+            id = tag['id'].to_s
+            total_posts = wp_client.list_posts("wp-json/wp/v2/posts?tags=#{id}")
+            total_posts = total_posts.headers['x-wp-total'].to_s
+            posts = wp_client.list_posts("wp-json/wp/v2/posts?_embed&tags=#{id}")
+            posts = JSON.parse(posts.body)
+            data = {'site_title'=>site_title,'description'=>description,'posts'=>posts}
+            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(data))
             File.open("tags/#{id}.html","w") do |text|
                 text.puts(body)
             end
