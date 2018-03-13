@@ -5,7 +5,7 @@ require 'json'
 require 'slim'
 require 'sass'
 
-class MAIN
+class MAKE
     def initialize
         @post_dir = './posts'
         @tag_dir = './tags'
@@ -17,7 +17,7 @@ class MAIN
         end
     end
 
-    def make_styles
+    def styles
         styles_list = ['list','post']
         styles_list.each do |name|
             scss = "./style/#{name}.scss"
@@ -29,14 +29,14 @@ class MAIN
         end
     end
 
-    def make_index_page
+    def index_page
         body = Slim::Template.new('template/index.html.slim').render
         File.open('index.html',"w") do |text|
             text.puts(body)
         end
     end
 
-    def make_tag_page
+    def tag_page
         require_relative './lib/wordpress.rb'
         wp_client = WpClient.new
         site_title = wp_client.site_meta('site_title')
@@ -60,7 +60,7 @@ class MAIN
     end
 end
 
-main = MAIN.new
-main.make_styles
-main.make_index_page
-main.make_tag_page
+make = MAKE.new
+make.styles
+make.index_page
+make.tag_page
