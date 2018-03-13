@@ -6,6 +6,8 @@ require 'slim'
 
 class MAIN
     def initialize
+        require 'sass'
+
         @post_dir = './posts'
         @tag_dir = './tags'
         if Dir::exist?(@post_dir) == false
@@ -14,6 +16,8 @@ class MAIN
         if Dir::exist?(@tag_dir) == false
             Dir::mkdir(@tag_dir)
         end
+
+        Sass::Plugin.options[:load_paths] = './lib/style'
     end
 
     def make_index_page
