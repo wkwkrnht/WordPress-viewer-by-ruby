@@ -20,9 +20,10 @@ class MAKE
     def styles
         styles_list = ['list','post']
         styles_list.each do |name|
-            scss = "./style/#{name}.scss"
-            css = "./style/#{name}.css"
+            scss = "style/#{name}.scss"
+            css = "style/#{name}.css"
             body = Sass::Engine.new(scss, :syntax => :scss)
+            p body
             File.open(css,"w") do |text|
                 text.puts(body)
             end
