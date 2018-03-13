@@ -48,7 +48,8 @@ class MAIN
     end
 end
 
-Sass::Plugin.options[:load_paths] = './lib/style'
+sass = Sass::Plugin.new 
+sass.options[:load_paths] = './lib/style'
 
 main = MAIN.new
 main.make_index_page
