@@ -3,7 +3,7 @@ Bundler.require
 
 require 'json'
 require 'slim'
-require 'sass'
+require 'sass/plugin'
 
 class MAIN
     def initialize
@@ -48,7 +48,7 @@ class MAIN
     end
 end
 
-sass = ::Sass::Plugin.options[:load_paths] = './lib/style'
+sass = Sass::Plugin.options[:load_paths] = './lib/style'
 p sass
 
 main = MAIN.new
