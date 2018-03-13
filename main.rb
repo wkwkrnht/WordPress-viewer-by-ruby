@@ -19,7 +19,7 @@ class MAIN
 
     def make_styles
         styles_list = ['list','post']
-        styles_list.each |name|
+        styles_list.each do |name|
             scss = "./style/#{name}.scss"
             css = "./style/#{name}.css"
             body = Sass::Engine.new(scss, :syntax => :scss)
