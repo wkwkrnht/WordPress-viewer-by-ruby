@@ -1,26 +1,27 @@
-.card-list{
-    align-content:space-around;
-    align-items:baseline;
-    display:flex;
-    flex-flow:row wrap;
-    justify-content:space-around;
+.card-list {
+    align-content: space-around;
+    align-items: baseline;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 
-.article-card{
-    height:30vmax;
-    margin:4vh auto;
-    position:relative;
-    width:30vmax;
+.article-card {
+    height: 30vmax;
+    margin: 4vh auto;
+    position: relative;
+    width: 30vmax;
 
-    .card-img,.card-title{
-        height:inherit;
-        position:absolute;
-        top:0;
-        width:inherit;
+    .card-img,
+    .card-title {
+        height: inherit;
+        position: absolute;
+        top: 0;
+        width: inherit;
     }
-    .card-title{
-        background-color:rgba(255,255,255,.3);
-        color:transparent;
-        vertical-align:middle;
+    .card-title {
+        background-color: rgba(255,255,255,.3);
+        color: transparent;
+        vertical-align: middle;
     }
 }
