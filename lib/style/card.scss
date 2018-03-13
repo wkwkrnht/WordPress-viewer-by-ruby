@@ -8,10 +8,18 @@
 
 .article-card{
     .card-img,.card-title{
+        height:inherit;
         position:absolute;
         top:0;
+        width:inherit;
+    }
+    .card-title{
+        background-color:rgba(255,255,255,.3);
+        color:transparent;
+        vertical-align:middle;
     }
     height:30vmax;
+    margin:4vh auto;
     position:relative;
     width:30vmax;
 }

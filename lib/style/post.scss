@@ -1,0 +1,24 @@
+/*
+    LOAD resources
+1.normalizer
+*/
+@import './normalize.scss';
+
+/*
+    addtinoal elements
+1.ToC
+2.marker
+*/
+.toc{
+    box-shadow:0 0 3vmin rgba(0,0,0,.1);
+    margin:4vh auto;
+    padding:4vh 0;
+    width:90%;
+    &-title{
+        max-width:80%;
+    }
+}
+
+.marker{
+    box-shadow:0 -0.3em 0 -0.1em rgb(255,255,0) inset;
+}
