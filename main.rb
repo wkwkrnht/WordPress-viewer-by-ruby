@@ -3,7 +3,7 @@ Bundler.require
 
 require 'json'
 require 'slim'
-require 'sass/plugin'
+require 'sass'
 
 class MAIN
     def initialize
@@ -17,8 +17,20 @@ class MAIN
         end
     end
 
+    def make_styles
+        styles_list = ['list','post']
+        styles_list.each |name|
+            scss = "./style/#{name}.scss"
+            css = "./style/#{name}.css"
+            body = Sass::Engine.new(scss, :syntax => :scss)
+            File.open(css,"w") do |text|
+                text.puts(body)
+            end
+        end
+    end
+
     def make_index_page
-        body = Slim::Template.new('index.html.slim').render
+        body = Slim::Template.new('template/index.html.slim').render
         File.open('index.html',"w") do |text|
             text.puts(body)
         end
@@ -47,8 +59,6 @@ class MAIN
         end
     end
 end
-
-Sass::Plugin.options[:load_paths] = './style'
 
 main = MAIN.new
 main.make_index_page
