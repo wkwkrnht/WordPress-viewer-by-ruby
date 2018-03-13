@@ -1,13 +1,20 @@
 /*
     LOAD resources
 1.normalizer
+2.DEFINE variables
 */
 @import './normalize.scss';
+@import './variable.scss';
 
 /*
     addtinoal elements
 1.ToC
-2.marker
+2.Original blog card
+3.
+4.
+5.
+6.
+7.marker
 */
 .toc{
     box-shadow:0 0 3vmin rgba(0,0,0,.1);
@@ -16,6 +23,61 @@
     width:90%;
     &-title{
         max-width:80%;
+    }
+}
+
+.ogp-blogcard{
+    background-color:#fff;
+    border:1px solid #ddd;
+    box-sizing:border-box;
+    overflow:hidden;
+    &-img,&-info{
+        display:inline-block;
+    }
+    &-img{
+        margin:auto;
+        max-width:20%;
+    }
+    &-info{
+        max-width:70%;
+        text-align:center;
+    }
+    &-title{
+        font-size:2rem;
+    }
+    &-share{
+        text-align:right;
+        & li{
+            display:inline-block;
+            font-size:1.6em;
+        }
+        & .fa-twitter{
+            color:#55acee;
+        }
+        & .fa-thumbs-up{
+            color:#3b5998;
+        }
+        & .fa-get-pocket{
+            color:#ef3f56;
+        }
+        & .hatebu{
+            color:#00a5de;
+            font:900 monospace;
+        }
+    }
+}
+.article-main .ogp-blogcard{
+    & blockquote[cite]::after,&-share li::before{
+        display:none;
+    }
+    &-img{
+        display:inline-block;
+    }
+    & blockquote,&-title{
+        border:none;
+    }
+    &-description,&-description:visited{
+        color:$root_color;
     }
 }
 
