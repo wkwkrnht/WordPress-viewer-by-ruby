@@ -7,6 +7,11 @@
 }
 
 .article-card{
+    height:30vmax;
+    margin:4vh auto;
+    position:relative;
+    width:30vmax;
+
     .card-img,.card-title{
         height:inherit;
         position:absolute;
@@ -18,8 +23,4 @@
         color:transparent;
         vertical-align:middle;
     }
-    height:30vmax;
-    margin:4vh auto;
-    position:relative;
-    width:30vmax;
 }
