@@ -27,15 +27,7 @@ html lang='ja'
         title
             = title
         /scss:
-            @import '/lib/style/normalize';
-            .tag-list{
-                &::before{
-                    content:"Tag";
-                }
-                & li{
-                    display:inline-block;
-                }
-            }
+            @import '../style/post.scss';
     body
         article
             header.article-header
