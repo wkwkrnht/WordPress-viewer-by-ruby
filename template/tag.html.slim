@@ -1,9 +1,6 @@
 - require_relative '../lib/wordpress.rb'
 - require 'json'
 - require 'slim'
-/- setting = File.open('../setting/main.json', "r") do |file|
-    - JSON.load(file)
-/- first_post_year = setting['first_post_year']
 - data = @locals
 - site_title = data['site_title']
 - description = data['description']
@@ -19,7 +16,7 @@ html lang='ja'
         title
             = site_title
         scss:
-            @import '../lib/style/normalize';
+            //@import '../lib/style/normalize';
             @import '../lib/style/card';
     body
         header.site-header
