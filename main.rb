@@ -61,5 +61,6 @@ class MAIN
 end
 
 main = MAIN.new
+main.make_styles
 main.make_index_page
 main.make_tag_page
