@@ -21,7 +21,9 @@ html lang='ja'
         meta name='description' content=description
         title
             = site_title
-        link rel='stylesheet' href='/style/list.css'
+        /link rel='stylesheet' href='/style/list.css'
+        scss:
+            @import '/style/list.css';
     body
         header.site-header
             h1.site-title
