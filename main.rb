@@ -30,7 +30,7 @@ class MAKE
     end
 
     def index_page
-        body = Slim::Template.new('template/index.html.slim').render
+        body = Slim::Template.new('index.html.slim').render
         File.open('index.html',"w") do |text|
             text.puts(body)
         end
@@ -52,7 +52,7 @@ class MAKE
             posts = wp_client.get_data("wp-json/wp/v2/posts?_embed&tags=#{id}")
             posts = JSON.parse(posts.body)
             data = {'site_title'=>site_title,'description'=>description,'posts'=>posts}
-            body = Slim::Template.new('template/tag.html.slim').render(PASS_data.new(data))
+            body = Slim::Template.new('tag.html.slim').render(PASS_data.new(data))
             File.open("tags/#{id}.html","w") do |text|
                 text.puts(body)
             end

@@ -1,4 +1,4 @@
-- require_relative '../lib/wordpress.rb'
+- require_relative './lib/wordpress.rb'
 - require 'json'
 /- setting = File.open('../setting/main.json', "r") do |file|
     - JSON.load(file)
@@ -26,7 +26,9 @@ html lang='ja'
         meta name='description' content=description
         title
             = title
-        link rel='stylesheet' href='/style/post.css'
+        /link rel='stylesheet' href='/style/post.css'
+        scss:
+            @import './style/post.scss';
     body
         article
             header.article-header
