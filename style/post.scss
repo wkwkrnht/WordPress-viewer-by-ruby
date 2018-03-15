@@ -35,8 +35,8 @@
 */
 .toc {
     box-shadow: 0 0 3vmin rgba(0,0,0,.1);
-    margin: calc($vertical-base * 2) auto;
-    padding: calc($vertical-base * 2) 0;
+    margin: calc(#{$vertical-base} * 2) auto;
+    padding: calc(#{$vertical-base} * 2) 0;
     width: 90%;
     &-title {
         max-width: 80%;
@@ -102,7 +102,7 @@
     background-color: $white;
     border: 1px solid #555;
     line-height: 2;
-    margin: calc($vertical-base * 2) auto;
+    margin: calc(#{$vertical-base} * 2) auto;
     max-width: 70%;
     min-width: 16em;
 
@@ -193,7 +193,7 @@
 
 .cutin-box,.cutin-box-inner {
     box-sizing: border-box;
-    padding: calc($vertical-base / 2) $vertical-base;
+    padding: calc(#{$vertical-base} / 2) $vertical-base;
 }
 .cutin-box {
     color: $white;

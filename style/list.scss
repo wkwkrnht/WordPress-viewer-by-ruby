@@ -5,8 +5,9 @@
 .site-header {
     background-color: $accent-color;
     box-shadow: 0 0 3vmin rgba(0,0,0,.3);
+    color: $white;
     height: 10%;
-    margin: 0 0 calc($vertical-base * 3);
+    margin: 0 0 calc(#{$vertical-base} * 3);
     padding: $vertical-base 0 0;
     width: 100%;
 }
