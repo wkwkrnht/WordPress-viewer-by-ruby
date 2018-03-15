@@ -3,8 +3,8 @@
 1.normalizer
 2.DEFINE variables
 */
-@import './normalize';
-@import './variable';
+@import 'normalize';
+@import 'variable';
 
 /*
     meta parts
@@ -13,7 +13,10 @@
 
 .tag-list {
     &::before {
-        content: "Tag";
+        background-color: $accent-color;
+        color: $white;
+        content: 'Tag';
+        margin: auto 1em auto auto;
     }
     & li {
         display: inline-block;
@@ -32,8 +35,8 @@
 */
 .toc {
     box-shadow: 0 0 3vmin rgba(0,0,0,.1);
-    margin: 4vh auto;
-    padding: 4vh 0;
+    margin: calc($vertical-base * 2) auto;
+    padding: calc($vertical-base * 2) 0;
     width: 90%;
     &-title {
         max-width: 80%;
@@ -41,7 +44,7 @@
 }
 
 .ogp-blogcard {
-    background-color: #fff;
+    background-color: $white;
     border: 1px solid #ddd;
     box-sizing: border-box;
     overflow: hidden;
@@ -96,10 +99,10 @@
 }
 
 .search-form {
-    background-color: #fff;
+    background-color: $white;
     border: 1px solid #555;
     line-height: 2;
-    margin: 4vh auto;
+    margin: calc($vertical-base * 2) auto;
     max-width: 70%;
     min-width: 16em;
 
@@ -115,14 +118,14 @@
 .search-btn {
     background-color: #1155ee;
     box-shadow: 0 0 3vmin rgba(0,0,0,.2);
-    color: #fff;
+    color: $white;
     max-width: 30%;
     padding-left: 2em;
     padding-right: 3em;
 
     &::after {
         bottom: 0;
-        color: #000;
+        color: $black;
         content: '\f25a';
         font-family: 'FontAwesomes';
         font-size: 2.5em;
@@ -169,51 +172,51 @@
 
 .simple-box {
     border: .1vmin solid #000;
-    margin: 2vh auto;
+    margin: $vertical-base auto;
     width: 80%;
     &.red {
-        border-color: #f44336;
+        border-color: $red;
     }
     &.blue {
-        border-color: #03a9f4;
-    }
-    &.orange {
-        border-color: #ff9800;
+        border-color: $blue;
     }
     &.yellow {
-        border-color: #ffeb3b;
+        border-color: $yellow;
+    }
+    &.orange {
+        border-color: $orenge;
     }
     &.green {
-        border-color: #8bc34a;
+        border-color: $green;
     }
 }
 
 .cutin-box,.cutin-box-inner {
     box-sizing: border-box;
-    padding: 1vh 2vh;
+    padding: calc($vertical-base / 2) $vertical-base;
 }
 .cutin-box {
-    color: #fff;
-    margin: 2vh auto;
+    color: $white;
+    margin: $vertical-base auto;
     text-align: center;
     width: calc(80% + (3vh * 2));
     &.red {
-        background-color: #f44336;
+        background-color: $red;
     }
     &.blue {
-        background-color: #03a9f4;
+        background-color: $blue;
     }
     &.yellow {
-        background-color: #ffeb3b;
+        background-color: $yellow;
     }
     &.orange {
-        background-color: #ff9800;
+        background-color: $orenge;
     }
     &.green {
-        background-color: #8bc34a;
+        background-color: $green;
     }
     &.black {
-        background-color: #000;
+        background-color: $black;
     }
 
     & > h3 {
@@ -221,34 +224,34 @@
     }
 }
 .cutin-box-inner {
-    background-color: #fff;
+    background-color: $white;
     border: 1vh solid;
     color: $root-color;
     margin: 0;
     text-align: initial;
     width: calc(80% + (2vh * 2));
     .red.cutin-box > & {
-        border-color: #f44336;
+        border-color: $red;
     }
     .blue.cutin-box > & {
-        border-color: #03a9f4;
+        border-color: $blue;
     }
     .yellow.cutin-box > & {
-        border-color: #ffeb3b;
+        border-color: $yellow;
     }
     .orange.cutin-box > & {
-        border-color: #ff9800;
+        border-color: $orenge;
     }
     .green.cutin-box > & {
-        border-color: #8bc34a;
+        border-color: $green;
     }
     .black.cutin-box > & {
-        border-color: #000;
+        border-color: $black;
     }
 
     .article-main & > h3 {
         box-shadow: none;
-        color: #fff;
+        color: $white;
     }
 }
 

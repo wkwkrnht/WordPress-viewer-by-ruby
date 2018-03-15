@@ -4,6 +4,8 @@ Bundler.require
 require 'json'
 require 'slim'
 require 'sass'
+require_relative './lib/wordpress.rb'
+require_relative './lib/util.rb'
 
 class MAKE
     def initialize
@@ -37,7 +39,6 @@ class MAKE
     end
 
     def tag_page
-        require_relative './lib/wordpress.rb'
         wp_client = WpClient.new
         site_title = wp_client.site_meta('site_title')
         description = wp_client.site_meta('description')

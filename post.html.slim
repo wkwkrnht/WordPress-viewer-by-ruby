@@ -1,8 +1,4 @@
 - require_relative './lib/wordpress.rb'
-- require 'json'
-/- setting = File.open('../setting/main.json', "r") do |file|
-    - JSON.load(file)
-/- first_post_year = setting['first_post_year']
 - wp_client = WpClient.new
 - site_title = wp_client.site_meta('site_title')
 - title = @locals['title']['rendered']

@@ -1,3 +1,7 @@
+@import 'variable';
+
+$card-size: 30vmax;
+
 .card-list {
     align-content: space-around;
     align-items: baseline;
@@ -7,21 +11,30 @@
 }
 
 .article-card {
-    height: 30vmax;
-    margin: 4vh auto;
+    box-shadow: 0 0 3vmin rgba(0,0,0,.2);
+    height: $card-size;
+    margin: calc($vertical-base * 2) auto;
     position: relative;
-    width: 30vmax;
+    width: $card-size;
 
     .card-img,
     .card-title {
-        height: inherit;
+        bottom: 0;
+        box-sizing: border-box;
         position: absolute;
-        top: 0;
         width: inherit;
     }
+
+    .card-img{
+        height: inherit;
+    }
+
     .card-title {
-        background-color: rgba(255,255,255,.3);
-        color: transparent;
+        background-color: rgba(0,0,0,.4);
+        box-sizing: border-box;
+        color: #fff;
+        height: calc($card-size / 3);
+        text-align: center;
         vertical-align: middle;
     }
 }
