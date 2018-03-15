@@ -1,4 +1,4 @@
-- require_relative '../lib/wordpress.rb'
+- require_relative './lib/wordpress.rb'
 - require 'json'
 - require 'slim'
 - data = @locals
@@ -15,7 +15,8 @@ html lang='ja'
         meta name='description' content=description
         title
             = site_title
-        link rel='stylesheet' href='/style/list.css'
+            scss:
+                @import './style/list.scss';
     body
         header.site-header
             h1.site-title
