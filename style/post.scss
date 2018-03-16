@@ -8,8 +8,11 @@
 
 /*
     meta parts
-1.tag list
+4.tag list
 */
+article {
+    box-shadow: 0 0 3vmin $shadow;
+}
 
 .tag-list {
     &::before {

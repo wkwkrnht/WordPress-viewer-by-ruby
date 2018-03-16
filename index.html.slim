@@ -1,4 +1,5 @@
 - require_relative './lib/wordpress.rb'
+- require_relative './lib/util.rb'
 - require 'json'
 - require 'slim'
 - wp_client = WpClient.new
@@ -8,6 +9,8 @@
 - total_posts = total_posts.headers['x-wp-total']
 - posts = wp_client.get_data("wp-json/wp/v2/posts?_embed&per_page=#{total_posts}")
 - posts = JSON.parse(posts.body)
+- config = GET_config.new
+- first_post_year = config.first_post_year
 doctype html
 html lang='ja'
     head

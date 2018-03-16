@@ -4,7 +4,7 @@
 
 .site-header {
     background-color: $accent-color;
-    box-shadow: 0 0 3vmin rgba(0,0,0,.3);
+    box-shadow: 0 0 3vmin $darken-shadow;
     color: $white;
     height: 10%;
     margin: 0 0 calc(#{$vertical-base} * 3);

@@ -12,7 +12,7 @@ end
 
 class GET_config
     def initialize
-        @setting = File.open('./setting/main.json', "r") do |file|
+        @setting = File.open('./config.json', "r") do |file|
             JSON.load(file)
         end
     end
