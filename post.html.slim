@@ -1,4 +1,7 @@
 - require_relative './lib/wordpress.rb'
+- require_relative './lib/util.rb'
+- config = GET_config.new
+- first_post_year = config.first_post_year
 - wp_client = WpClient.new
 - site_title = wp_client.site_meta('site_title')
 - title = @locals['title']['rendered']
@@ -105,7 +108,7 @@ html lang='ja'
                         a href='javascript:void(0);' onClick='window.print();return false;'
                             span class='icon icon-print'
                 a.copyright href='/' title='Go to home'
-                    /= first_post_year
+                    = first_post_year
                     | &copy;
                     = site_title
         /javascript:

@@ -12,6 +12,8 @@
 */
 article {
     box-shadow: 0 0 3vmin $shadow;
+    margin: calc(#{$vertical-base} * 3) auto;
+    width: 96%;
 }
 
 .tag-list {
