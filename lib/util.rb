@@ -24,4 +24,8 @@ class GET_config
     def site_url
         return @config['site_url']
     end
+
+    def twitter
+        return @config['twittter']
+    end
 end

@@ -5,8 +5,10 @@
 - site_url = config.site_url
 - domain = site_url.gsub('http://','')
 - domain = site_url.gsub('https://','')
+- twitter = '@' + config.twitter
 - wp_client = WpClient.new
 - site_title = wp_client.site_meta('site_title')
+- logo = wp_client.site_meta('logo')
 - title = @locals['title']['rendered']
 - content = @locals['content']['rendered']
 - description = content.to_s.slice(0,99) || wp_client.site_meta('description')
@@ -34,15 +36,48 @@ html lang='ja'
         meta property='og:site_name' content=site_title
         meta property='og:image' content=eyecatch
         meta name='twitter:card' content='summary'
-        /meta name='twitter:domain' content="<?php echo $_SERVER['SERVER_NAME'];?>"
+        meta name='twitter:domain' content=domain
         meta name='twitter:title' content=title
         meta name='twitter:description' content=description
         meta name='twitter:image' content=eyecatch
-        /meta name='twitter:site' content="@<?php echo get_option('Twitter_URL');?>"
+        meta name='twitter:site' content=twitter
         title
             = title
         scss:
             @import './style/post.scss';
+        script type='application/ld+json'
+            {
+                "@context": "http://schema.org",
+                "@type": "NewsArticle",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://google.com/article"
+                },
+                "headline": "#{title}",
+                    "image": {
+                        "@type": "ImageObject",
+                        "url": "#{eyecatch}",
+                        "height": 256,
+                        "width": 696
+                    },
+                "datePublished": "",
+                "dateModified": "'",
+                "author": {
+                    "@type": "Person",
+                    "name": "#{author}"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "#{site_title}",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "#{logo}",
+                        "width": 600,
+                        "height": 60
+                    }
+                },
+                "description": "#{description}"
+            }
     body
         article
             header.article-header

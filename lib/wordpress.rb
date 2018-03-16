@@ -3,7 +3,8 @@ class WpClient
     require 'json'
 
     def initialize
-        @conn = Faraday.new(url: 'http://wkwkrnht.wp.xdomain.jp/') do |builder|
+        @url = 'http://wkwkrnht.wp.xdomain.jp/'
+        @conn = Faraday.new(url: @url) do |builder|
             builder.request :url_encoded
             builder.adapter :net_http
         end
@@ -16,6 +17,8 @@ class WpClient
             return data['name']
         elsif which == 'description'
             return data['description']
+        elsif which == 'logo'
+            return 'http://www.google.com/s2/favicons?domain=' + @url
         end
     end
 
