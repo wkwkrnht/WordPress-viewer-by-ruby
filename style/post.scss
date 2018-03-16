@@ -8,12 +8,33 @@
 
 /*
     meta parts
+1.outer
+2.header
 4.tag list
 */
 article {
     box-shadow: 0 0 3vmin $shadow;
     margin: calc(#{$vertical-base} * 3) auto;
     width: 96%;
+}
+
+.article-header {
+    margin: 0 0 calc(#{$vertical-base} * 2);
+
+    .article-info {
+        box-sizing: border-box;
+        margin: 0;
+        width: inherit;
+
+        .article-meta {
+            width: 35%;
+
+            & > * {
+                display: block;
+                width: inherit;
+            }
+        }
+    }
 }
 
 .tag-list {
