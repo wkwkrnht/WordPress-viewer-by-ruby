@@ -26,6 +26,6 @@ class GET_config
     end
 
     def twitter
-        return @config['twittter']
+        return @config['twitter']
     end
 end
