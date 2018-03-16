@@ -12,12 +12,16 @@ end
 
 class GET_config
     def initialize
-        @setting = File.open('./config.json', "r") do |file|
+        @config = File.open('./config.json', "r") do |file|
             JSON.load(file)
         end
     end
 
     def first_post_year
-        return @setting['first_post_year']
+        return @config['first_post_year']
+    end
+
+    def site_url
+        return @config['site_url']
     end
 end

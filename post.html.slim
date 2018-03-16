@@ -2,7 +2,9 @@
 - require_relative './lib/util.rb'
 - config = GET_config.new
 - first_post_year = config.first_post_year
-- site_url = conig.site_url
+- site_url = config.site_url
+- domain = site_url.gsub('http://','')
+- domain = site_url.gsub('https://','')
 - wp_client = WpClient.new
 - site_title = wp_client.site_meta('site_title')
 - title = @locals['title']['rendered']
@@ -25,6 +27,18 @@ html lang='ja'
         meta name='viewport' content='width=device-width initial-scale=1'
         meta name='renderer' content='webkit'
         meta name='description' content=description
+        meta property='og:type' content='article'
+        meta property='og:title' content=title
+        meta property='og:url' content=meta_url
+        meta property='og:description' content=description
+        meta property='og:site_name' content=site_title
+        meta property='og:image' content=eyecatch
+        meta name='twitter:card' content='summary'
+        /meta name='twitter:domain' content="<?php echo $_SERVER['SERVER_NAME'];?>"
+        meta name='twitter:title' content=title
+        meta name='twitter:description' content=description
+        meta name='twitter:image' content=eyecatch
+        /meta name='twitter:site' content="@<?php echo get_option('Twitter_URL');?>"
         title
             = title
         scss:
