@@ -45,6 +45,7 @@ html lang='ja'
             = title
         scss:
             @import './style/post.scss';
+        link rel='preload' as='script' href='https://use.fontawesome.com/releases/v5.0.8/js/all.js'
         script type='application/ld+json'
             |{
             |    "@context": "http://schema.org",
@@ -102,62 +103,62 @@ html lang='ja'
                                 = name
                 ul.share-button
                     li
-                        a#nativeShare
-                            span class='icon icon-share'
+                        a#nativeShare title='Share this'
+                            span class='fas fa-share'
                     li
-                        a href='https://mastoshare.net/post.php'
+                        a href='https://mastoshare.net/post.php' title='Toot this'
                             | toot
                     li
-                        a href='https://twitter.com/share?url=#{meta_url}&amp;text=#{title}'
-                            span class='icon icon-twitter'
+                        a href='https://twitter.com/share?url=#{meta_url}&amp;text=#{title}' title='Tweet this'
+                            span class='fab fa-twitter'
                     li
-                        a href='https://www.facebook.com/share.php?u=#{meta_url}'
-                            span class='icon icon-facebook'
+                        a href='https://www.facebook.com/share.php?u=#{meta_url}' title='Share this to your friends on facebook'
+                            span class='fab fa-facebook'
                     li
-                        a href='http://lineit.line.me/share/ui?url=#{meta_url}'
-                            span class='icon icon-line'
+                        a href='http://lineit.line.me/share/ui?url=#{meta_url}' title='この記事をLINEで送る'
+                            span class='fab fa-line'
                     li
-                        a href='https://plus.google.com/share?url=#{meta_url}'
-                            span class='icon icon-gplus'
+                        a href='https://plus.google.com/share?url=#{meta_url}' title='Share this to your group'
+                            span class='fab fa-gplus'
                     li
-                        a href='https://www.linkedin.com/shareArticle?mini=true&url=#{meta_url}&amp;title=#{title}'
-                            span class='icon icon-linkedin'
+                        a href='https://www.linkedin.com/shareArticle?mini=true&url=#{meta_url}&amp;title=#{title}' title='Share this on linkedin'
+                            span class='fab fa-linkedin'
                     li
-                        a href='https://bufferapp.com/add?url#{meta_url}&amp;title=#{title}'
-                            span class='icon icon-buffer'
+                        a href='https://bufferapp.com/add?url#{meta_url}&amp;title=#{title}' title='Share this via buffer'
+                            span class='fab fa-buffer'
                     li
-                        a href='http://hootsuite.com/hootlet/social-share?url=#{meta_url}&amp;title=#{title}&amp;partner=#{site_title}'
-                            span class='icon icon-hootsuite'
+                        a href='http://hootsuite.com/hootlet/social-share?url=#{meta_url}&amp;title=#{title}&amp;partner=#{site_title}'  title='Share this via hootsute'
+                            span class='fab fa-hootsuite'
                     li
-                        a href='https://www.reddit.com/submit?url=#{meta_url}'
-                            span class='icon icon-reddit'
+                        a href='https://www.reddit.com/submit?url=#{meta_url}' title='Share this to reddit users'
+                            span class='fab fa-reddit'
                     li
-                        a href='http://vkontakte.ru/share.php?url=#{meta_url}'
-                            span class='icon icon-vk'
+                        a href='http://vkontakte.ru/share.php?url=#{meta_url}' title='Share this to vk users'
+                            span class='fab fa-vk'
                     li
-                        a href='http://www.stumbleupon.com/submit?url=#{meta_url}&amp;title=#{title}'
-                            span class='icon icon-stumbleupon'
+                        a href='http://www.stumbleupon.com/submit?url=#{meta_url}&amp;title=#{title}' title='Share this on stumbleupon'
+                            span class='fab fa-stumbleupon'
                     li
-                        a href='http://www.digg.com/submit?url=#{meta_url}&amp;title=#{title}'
-                            span class='icon icon-digg'
+                        a href='http://www.digg.com/submit?url=#{meta_url}&amp;title=#{title}' title='Share this on digg'
+                            span class='fab fa-digg'
                     li
-                        a href='http://b.hatena.ne.jp/add?mode=confirm&url=#{meta_url}&amp;title=#{title}'
-                            span class='icon icon-hatebu'
+                        a href='http://b.hatena.ne.jp/add?mode=confirm&url=#{meta_url}&amp;title=#{title}' title='この記事をはてブする'
+                            span class='fab fa-hatebu'
                     li
-                        a href='https://getpocket.com/edit?url=#{meta_url}&amp;title=#{title}'
-                            span class='icon icon-pocket'
+                        a href='https://getpocket.com/edit?url=#{meta_url}&amp;title=#{title}' title='Pocket this'
+                            span class='fab fa-pocket'
                     li
-                        a href='http://www.instapaper.com/text?u=#{meta_url}'
-                            span class='icon icon-instapaper'
+                        a href='http://www.instapaper.com/text?u=#{meta_url}' title='Share this to your TL on Instapaper'
+                            span class='fab icon-instapaper'
                     li
-                        a href='https://www.tumblr.com/widgets/share/tool?canonicalUrl=#{meta_url}'
-                            span class='icon icon-tumblr'
+                        a href='https://www.tumblr.com/widgets/share/tool?canonicalUrl=#{meta_url}' title='Share this to your blog on tumblr'
+                            span class='fab fa-tumblr'
                     li
-                        a href='mailto:?Subject=#{title}&amp;Body=#{meta_url}'
-                            span class='icon icon-mail'
+                        a href='mailto:?Subject=#{title}&amp;Body=#{meta_url}' title='Mail this'
+                            span class='fab fa-paper-plane'
                     li
-                        a href='javascript:void(0);' onClick='window.print();return false;'
-                            span class='icon icon-print'
+                        a href='javascript:void(0);' onClick='window.print();return false;' title='Print this'
+                            span class='fab fa-print'
                 a.copyright href='/' title='Go to home'
                     = first_post_year
                     | &copy;
@@ -179,3 +180,4 @@ html lang='ja'
                     }
                 );
             };
+        script defer='' src='https://use.fontawesome.com/releases/v5.0.8/js/all.js' integrity='sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ' crossorigin='anonymous'

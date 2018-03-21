@@ -162,42 +162,33 @@ article {
     }
 }
 
-.information,
-.question,
-.attention {
+.info-box {
+    $type-circle-syze:7em;
+
     background-color: #f4f3eb;
     box-sizing: border-box;
     margin: 1em auto;
-    padding: 2em 2em 2em calc(7rem + 2vmin);
+    padding: 2em 2em 2em calc($type-circle-syze + 2vmin);
     position: relative;
     width: 80%;
-}
-.information::before,
-.question::before,
-.attention::before {
-    background-color: #eae3b4;
-    border-radius: 50%;
-    color: #f4f3eb;
-    display: inline-block;
-    font-size: 5em;
-    font-weight: 700;
-    height: 7rem;
-    left: 1vmin;
-    line-height: 7em;
-    margin-right: 7em;
-    position: absolute;
-    text-align: center;
-    top: 1vmin;
-    width: 7em;
-}
-.information::before {
-    content: 'ｉ';
-}
-.question::before {
-    content: '？';
-}
-.attention::before {
-    content: '！';
+
+    &::before {
+        background-color: #eae3b4;
+        border-radius: 50%;
+        color: #f4f3eb;
+        content: attr(data-type);
+        display: inline-block;
+        font-size: 5em;
+        font-weight: 700;
+        height: $type-circle-syze;
+        left: 1vmin;
+        line-height: $type-circle-syze;
+        margin-right: $type-circle-syze;
+        position: absolute;
+        text-align: center;
+        top: 1vmin;
+        width: $type-circle-syze;
+    }
 }
 
 .simple-box {
