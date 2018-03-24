@@ -3,6 +3,7 @@
 - config = GET_config.new
 - first_post_year = config.first_post_year
 - site_url = config.site_url
+- lang = config.language
 - domain = site_url.gsub('http://','')
 - domain = site_url.gsub('https://','')
 - twitter = '@' + config.twitter
@@ -13,16 +14,17 @@
 - content = @locals['content']['rendered']
 - description = content.to_s.slice(0,99) || wp_client.site_meta('description')
 - date = @locals['date']
+- modified = @locals['modified']
 - tags = @locals['_embedded']['wp:term'][1] || {'name' => 'undefined', 'id' => 'undefned'}
 - author = @locals['_embedded']['author'][0]['name']
 - if_eyecatch = @locals['_embedded']['wp:featuredmedia']
 - if if_eyecatch == nil
-    - eyecatch = '../lib/no-img/full.svg'
+    - eyecatch = site_url + '/lib/no-img/full.svg'
 - else
     - eyecatch = if_eyecatch[0]['source_url']
 - meta_url = site_url + '/posts/' + @locals['id'].to_s
 doctype html
-html lang='ja'
+html lang=lang
     head
         meta charset='utf-8'
         meta content='IE=edge' http-equiv='X-UA-Compatible'
@@ -61,8 +63,8 @@ html lang='ja'
             |            "height": 256,
             |            "width": 696
             |        },
-            |    "datePublished": "",
-            |    "dateModified": "'",
+            |    "datePublished": "#{date}",
+            |    "dateModified": "#{modified}",
             |    "author": {
             |        "@type": "Person",
             |        "name": "#{author}"
@@ -73,8 +75,8 @@ html lang='ja'
             |        "logo": {
             |            "@type": "ImageObject",
             |            "url": "#{logo}",
-            |            "width": 600,
-            |            "height": 60
+            |            "width": 16,
+            |            "height": 16
             |        }
             |    },
             |    "description": "#{description}"
@@ -99,7 +101,7 @@ html lang='ja'
                         - id = tag['id'].to_s
                         - name = tag['name']
                         li
-                            a href="/tags/#{id}" title=name tabindex='0'
+                            a href="#{site_url}/tags/#{id}" title=name tabindex='0'
                                 = name
                 ul.share-button
                     li

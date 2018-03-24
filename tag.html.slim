@@ -1,22 +1,39 @@
 - require_relative './lib/util.rb'
 - config = GET_config.new
 - first_post_year = config.first_post_year
+- site_url = config.site_url
+- domain = site_url.gsub('http://','')
+- domain = site_url.gsub('https://','')
+- twitter = '@' + config.twitter
+- lang = config.language
 - data = @locals
 - site_title = data['site_title']
 - description = data['description']
 - posts = data['posts']
 doctype html
-html lang='ja'
+html lang=lang
     head
         meta charset='utf-8'
         meta content='IE=edge' http-equiv='X-UA-Compatible'
         meta name='viewport' content='width=device-width initial-scale=1'
         meta name='renderer' content='webkit'
         meta name='description' content=description
+        meta property='og:type' content='article'
+        meta property='og:title' content=site_title
+        meta property='og:url' content=site_url
+        meta property='og:description' content=description
+        meta property='og:site_name' content=site_title
+        meta property='og:image' content=logo
+        meta name='twitter:card' content='summary'
+        meta name='twitter:domain' content=domain
+        meta name='twitter:title' content=site_title
+        meta name='twitter:description' content=description
+        meta name='twitter:image' content=logo
+        meta name='twitter:site' content=twitter
         title
             = site_title
-            scss:
-                @import './style/list.scss';
+        scss:
+            @import './style/list.scss';
     body
         header.site-header
             h1.site-title
@@ -31,14 +48,14 @@ html lang='ja'
                 - title = post['title']['rendered']
                 - if_img = post['_embedded']['wp:featuredmedia']
                 - if if_img == nil
-                    - img = '/lib/no-img/crop.svg'
+                    - img = site_url + '/lib/no-img/crop.svg'
                 - else
                     - img = if_img[0]['media_details']['sizes']
                     - img = img.select { |k, v| k.include?('-crop') }
                     - img_key = img.keys
                     - img_key = img_key[0]
                     - img = img[img_key]['source_url']
-                a.article-card href="/posts/#{slug}.html" title=title tabindex='0'
+                a.article-card href="#{site_url}/posts/#{slug}.html" title=title tabindex='0'
                     img.card-img src=img alt='eyecatch'
                     h2.card-title
                         = title

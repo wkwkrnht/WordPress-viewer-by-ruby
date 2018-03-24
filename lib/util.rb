@@ -17,12 +17,16 @@ class GET_config
         end
     end
 
-    def first_post_year
-        return @config['first_post_year']
+    def language
+        return @config['language']
     end
 
     def site_url
         return @config['site_url']
+    end
+
+    def first_post_year
+        return @config['first_post_year']
     end
 
     def twitter
