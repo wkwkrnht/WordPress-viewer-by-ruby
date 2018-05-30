@@ -20,12 +20,10 @@ class MAKE
     end
 
     def styles
-        styles_list = ['list','post']
-        styles_list.each do |name|
-            css = "style/#{name}.css"
-            scss = "style/#{name}.scss"
-            body = Sass::Engine.new(scss,{:syntax=>:scss}).render
-            File.open(css,"w") do |text|
+        files = ['list','post']
+        files.each do |name|
+            body = Sass::Engine.new("style/#{name}.scss",{:syntax=>:scss}).render
+            File.open("style/#{name}.css","w") do |text|
                 text.puts(body)
             end
         end
@@ -62,6 +60,6 @@ class MAKE
 end
 
 make = MAKE.new
-#make.styles
+make.styles
 make.index_page
 make.tag_page
