@@ -14,12 +14,12 @@
 */
 article {
     box-shadow: 0 0 3vmin $shadow;
-    margin: calc(#{$vertical-base} * 3) auto;
+    margin: calc( #{$vertical-base} * 3 ) auto;
     width: 96%;
 }
 
 .article-header {
-    margin: 0 0 calc(#{$vertical-base} * 2);
+    margin: 0 0 calc( #{$vertical-base} * 2 );
 
     .article-info {
         box-sizing: border-box;
@@ -65,8 +65,8 @@ article {
 */
 .toc {
     box-shadow: 0 0 3vmin rgba(0,0,0,.1);
-    margin: calc(#{$vertical-base} * 2) auto;
-    padding: calc(#{$vertical-base} * 2) 0;
+    margin: calc( #{$vertical-base} * 2 ) auto;
+    padding: calc( #{$vertical-base} * 2 ) 0;
     width: 90%;
     &-title {
         max-width: 80%;
@@ -132,7 +132,7 @@ article {
     background-color: $white;
     border: 1px solid #555;
     line-height: 2;
-    margin: calc(#{$vertical-base} * 2) auto;
+    margin: calc( #{$vertical-base} * 2 ) auto;
     max-width: 70%;
     min-width: 16em;
 
@@ -168,7 +168,7 @@ article {
     background-color: #f4f3eb;
     box-sizing: border-box;
     margin: 1em auto;
-    padding: 2em 2em 2em calc($type-circle-syze + 2vmin);
+    padding: 2em 2em 2em calc( $type-circle-syze + 2vmin );
     position: relative;
     width: 80%;
 
@@ -214,13 +214,13 @@ article {
 
 .cutin-box,.cutin-box-inner {
     box-sizing: border-box;
-    padding: calc(#{$vertical-base} / 2) $vertical-base;
+    padding: calc( #{$vertical-base} / 2 ) $vertical-base;
 }
 .cutin-box {
     color: $white;
     margin: $vertical-base auto;
     text-align: center;
-    width: calc(80% + (3vh * 2));
+    width: calc( 80% + ( 3vh * 2 ) );
     &.red {
         background-color: $red;
     }
@@ -250,7 +250,7 @@ article {
     color: $root-color;
     margin: 0;
     text-align: initial;
-    width: calc(80% + (2vh * 2));
+    width: calc( 80% + ( 2vh * 2 ) );
     .red.cutin-box > & {
         border-color: $red;
     }

@@ -13,7 +13,7 @@ $card-size: 30vmax;
 .article-card {
     box-shadow: 0 0 3vmin $shadow;
     height: $card-size;
-    margin: calc(#{$vertical-base} * 2) auto;
+    margin: calc( #{$vertical-base} * 2 ) auto;
     position: relative;
     width: $card-size;
 
