@@ -20,8 +20,7 @@ class MAKE
     end
 
     def styles
-        #files = ['list','post']
-        files = ['post']
+        files = ['list','post']
         files.each do |name|
             body = Sass::Engine.new("style/#{name}.scss",{:syntax=>:scss}).render
             File.open("style/#{name}.css","w") do |text|
