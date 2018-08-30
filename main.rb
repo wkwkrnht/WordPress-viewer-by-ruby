@@ -22,7 +22,7 @@ class MAKE
     def styles
         files = ['list','post']
         files.each do |name|
-            body = SassC::Engine.new("style/#{name}.scss").render
+            body = Sass::Engine.new("style/#{name}.scss",{:syntax=>:scss}).render
             File.open("style/#{name}.css","w") do |text|
                 text.puts(body)
             end

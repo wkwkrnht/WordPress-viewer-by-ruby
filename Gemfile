@@ -2,5 +2,5 @@ source 'https://rubygems.org'
 
 gem 'faraday'
 gem 'json'
-gem 'sassc'
+gem 'sass'
 gem 'slim'
