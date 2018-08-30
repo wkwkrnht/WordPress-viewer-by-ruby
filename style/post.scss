@@ -18,21 +18,25 @@ article {
     width: 96%;
 }
 
-.article-header {
-    margin: 0 0 calc( #{$vertical-base} * 2 );
+.article {
+    &-header {
+        margin: 0 0 calc( #{$vertical-base} * 2 );
+    }
 
-    .article-info {
+    &-info {
         box-sizing: border-box;
         margin: 0;
         width: inherit;
 
-        .article-meta {
-            width: 35%;
 
-            & > * {
-                display: block;
-                width: inherit;
-            }
+    }
+
+    &-meta {
+        width: 35%;
+
+        & > * {
+            display: block;
+            width: inherit;
         }
     }
 }
@@ -48,6 +52,7 @@ article {
         vertical-align: middle;
         width: 6em;
     }
+
     & li {
         display: inline-block;
     }
@@ -78,32 +83,41 @@ article {
     border: 1px solid #ddd;
     box-sizing: border-box;
     overflow: hidden;
+
     &-img,
     &-info {
         display: inline-block;
     }
+
     &-img {
         margin: auto;
         max-width: 20%;
     }
+
     &-info {
         max-width: 70%;
         text-align: center;
     }
+
     &-share {
         text-align: right;
+
         & li {
             display: inline-block;
         }
+
         & .fa-twitter {
             color: #55acee;
         }
+
         & .fa-thumbs-up {
             color: #3b5998;
         }
+
         & .fa-get-pocket {
             color: #ef3f56;
         }
+
         & .hatebu {
             color: #00a5de;
             font: 900 monospace;

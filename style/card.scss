@@ -25,14 +25,14 @@ $card-size: 30vmax;
         width: inherit;
     }
 
-    .card-img{
+    .card-img {
         height: inherit;
     }
 
     .card-title {
-        background-color: rgba(0,0,0,.4);
+        background-color: $darken-shadow;
         box-sizing: border-box;
-        color: #fff;
+        color: $white;
         margin: 0;
         text-align: center;
         vertical-align: middle;
