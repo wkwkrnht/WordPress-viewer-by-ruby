@@ -60,6 +60,6 @@ class MAKE
 end
 
 make = MAKE.new
-make.styles
+#make.styles
 make.index_page
 make.tag_page
