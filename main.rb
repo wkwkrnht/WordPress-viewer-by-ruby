@@ -20,10 +20,9 @@ class MAKE
     end
 
     def styles
-        names = ['list','post']
-        names.each do |name|
-            source = File.read("style/#{name}.scss")
-            body = Sass::Engine.new(source,{:syntax=>:scss})
+        files = ['list','post']
+        files.each do |name|
+            body = Sass::Engine.new("style/#{name}.scss",{:syntax=>:scss})
             body = body.render
             File.open("style/#{name}.css","w") do |text|
                 text.puts(body)
