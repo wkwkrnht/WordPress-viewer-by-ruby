@@ -46,15 +46,44 @@ article {
         width: 6em;
     }
 
-    & li {
+    li {
         display: inline-block;
-        padding: initial 2em;
     }
 }
 
 .share-button {
     a {
         color: $root-color;
+    }
+    .fa-twitter{
+        color: $twitter;
+    }
+    .fa-facebook{
+        color: $facebook;
+    }
+    .fa-line{
+        color: $line;
+    }
+    .fa-mastodon{
+        color: $mastodon;
+    }
+    .fa-google-puls-g{
+        color: $gplus;
+    }
+    .fa-reddit{
+        color: $reddit;
+    }
+    .fa-vk{
+        color: $vk;
+    }
+    .fa-stumbleupon{
+        color: $stumbleupon;
+    }
+    .fa-get-pocket{
+        color: $pocket;
+    }
+    .fa-tumblr{
+        color: $tumblr;
     }
 }
 
