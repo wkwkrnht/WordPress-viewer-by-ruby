@@ -1,0 +1,356 @@
+@import 'variable';
+
+/*
+    meta parts
+1.outer
+2.header
+4.tag list
+*/
+article {
+    box-shadow: 0 0 3vmin $shadow;
+    margin: calc( #{$vertical-base} * 3 ) auto;
+    width: 96%;
+}
+
+.article {
+    &-header {
+        margin: 0 0 calc( #{$vertical-base} * 2 );
+    }
+
+    &-info {
+        box-sizing: border-box;
+        display: grid;
+        grid-gap: 1em;
+        grid-template-columns: 1fr 35%;
+        grid-template-rows: 1em 1em;
+        margin: 0;
+        width: inherit;
+    }
+
+    &-title {
+        grid-column: 1;
+        grid-row: 1 / 3;
+        margin-left: 1em;
+    }
+
+    &-date {
+        display: block;
+        grid-column: 2;
+        grid-row: 1 / 2;
+    }
+
+    &-author {
+        display: block;
+        grid-column: 2;
+        grid-row: 2 / 3;
+    }
+}
+
+.tag-list {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding: 0 1em 0 0;
+    width: inherit;
+
+    &::before {
+        background-color: $accent-color;
+        color: $white;
+        content: 'Tag';
+        height: 2em;
+        margin: 0;
+        text-align: center;
+        vertical-align: middle;
+        width: 6em;
+    }
+
+    li {
+        display: inline-block;
+    }
+}
+
+.share-button {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding: 0 1em 0 0;
+    width: inherit;
+
+    li {
+        display: inline-block;
+    }
+
+    a {
+        color: $root-color;
+        font-size: 3em;
+    }
+    .monospace {
+        font-family: monospace;
+    }
+    .fa-twitter{
+        color: $twitter;
+    }
+    .fa-facebook{
+        color: $facebook;
+    }
+    .fa-line{
+        color: $line;
+    }
+    .fa-mastodon{
+        color: $mastodon;
+    }
+    .fa-google-puls-g{
+        color: $gplus;
+    }
+    .fa-reddit{
+        color: $reddit;
+    }
+    .fa-vk{
+        color: $vk;
+    }
+    .fa-stumbleupon{
+        color: $stumbleupon;
+    }
+    .fa-get-pocket{
+        color: $pocket;
+    }
+    .fa-tumblr{
+        color: $tumblr;
+    }
+}
+
+/*
+    addtinoal elements
+1.ToC
+2.Original blog card
+3.formed box alike serach engine
+4.specific box(info, question, attention)
+5.simple box
+6.
+7.marker
+*/
+.toc {
+    box-shadow: 0 0 3vmin rgba(0,0,0,.1);
+    margin: calc( #{$vertical-base} * 2 ) auto;
+    padding: calc( #{$vertical-base} * 2 ) 0;
+    width: 90%;
+    &-title {
+        max-width: 80%;
+    }
+}
+
+.ogp-blogcard {
+    background-color: $white;
+    border: 1px solid $gray;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &-img,
+    &-info {
+        display: inline-block;
+    }
+
+    &-img {
+        margin: auto;
+        max-width: 20%;
+    }
+
+    &-info {
+        max-width: 70%;
+        text-align: center;
+    }
+
+    &-share {
+        text-align: right;
+
+        & li {
+            display: inline-block;
+        }
+
+        & .fa-twitter {
+            color: $twitter;
+        }
+
+        & .fa-thumbs-up {
+            color: $facebook;
+        }
+
+        & .fa-get-pocket {
+            color: $pocket;
+        }
+
+        & .hatebu {
+            color: $hatebu;
+            font: 900 monospace;
+        }
+    }
+}
+.article-main .ogp-blogcard {
+    & blockquote[cite]::after,
+    &-share li::before {
+        display: none;
+    }
+    &-img {
+        display: inline-block;
+    }
+    & blockquote,
+    &-title {
+        border: none;
+    }
+    &-description,
+    &-description:visited {
+        color: $root-color;
+    }
+}
+
+.search-form {
+    background-color: $white;
+    border: 1px solid $gray;
+    line-height: 2;
+    margin: calc( #{$vertical-base} * 2 ) auto;
+    max-width: 70%;
+    min-width: 16em;
+
+    & > *{
+        display: inline-block;
+        padding: 1em;
+    }
+}
+.search-btn,
+.search-btn::after {
+    position: absolute;
+}
+.search-btn {
+    background-color: $blue;
+    box-shadow: 0 0 3vmin rgba(0,0,0,.2);
+    color: $white;
+    max-width: 30%;
+    padding-left: 2em;
+    padding-right: 3em;
+
+    &::after {
+        bottom: 0;
+        color: $black;
+        content: '\f25a';
+        font-family: 'FontAwesomes';
+        font-size: 2.5em;
+    }
+}
+
+.info-box {
+    $type-circle-syze: 7em;
+
+    background-color: #f4f3eb;
+    box-sizing: border-box;
+    margin: 1em auto;
+    padding: 2em 2em 2em calc( $type-circle-syze + 2vmin );
+    position: relative;
+    width: 80%;
+
+    &::before {
+        background-color: #eae3b4;
+        border-radius: 50%;
+        color: #f4f3eb;
+        content: attr(data-type);
+        display: inline-block;
+        font-size: 5em;
+        font-weight: 700;
+        height: $type-circle-syze;
+        left: 1vmin;
+        line-height: $type-circle-syze;
+        margin-right: $type-circle-syze;
+        position: absolute;
+        text-align: center;
+        top: 1vmin;
+        width: $type-circle-syze;
+    }
+}
+
+.simple-box {
+    border: .1vmin solid #000;
+    margin: $vertical-base auto;
+    width: 80%;
+    &.red {
+        border-color: $red;
+    }
+    &.blue {
+        border-color: $blue;
+    }
+    &.yellow {
+        border-color: $yellow;
+    }
+    &.orange {
+        border-color: $orenge;
+    }
+    &.green {
+        border-color: $green;
+    }
+}
+
+.cutin-box,.cutin-box-inner {
+    box-sizing: border-box;
+    padding: calc( #{$vertical-base} / 2 ) $vertical-base;
+}
+.cutin-box {
+    color: $white;
+    margin: $vertical-base auto;
+    text-align: center;
+    width: calc( 80% + ( 3vh * 2 ) );
+    &.red {
+        background-color: $red;
+    }
+    &.blue {
+        background-color: $blue;
+    }
+    &.yellow {
+        background-color: $yellow;
+    }
+    &.orange {
+        background-color: $orenge;
+    }
+    &.green {
+        background-color: $green;
+    }
+    &.black {
+        background-color: $black;
+    }
+
+    & > h3 {
+        font-weight: 700;
+    }
+}
+.cutin-box-inner {
+    background-color: $white;
+    border: 1vh solid;
+    color: $root-color;
+    margin: 0;
+    text-align: initial;
+    width: calc( 80% + ( 2vh * 2 ) );
+    .red.cutin-box > & {
+        border-color: $red;
+    }
+    .blue.cutin-box > & {
+        border-color: $blue;
+    }
+    .yellow.cutin-box > & {
+        border-color: $yellow;
+    }
+    .orange.cutin-box > & {
+        border-color: $orenge;
+    }
+    .green.cutin-box > & {
+        border-color: $green;
+    }
+    .black.cutin-box > & {
+        border-color: $black;
+    }
+
+    .article-main & > h3 {
+        box-shadow: none;
+        color: $white;
+    }
+}
+
+.marker {
+    box-shadow: 0 -.3em 0 -.1em rgb(255,255,0) inset;
+}

@@ -1,0 +1,42 @@
+@import 'variable';
+
+.article-main {
+    h2,h3,h4,h5,h6 {
+        margin: $vertical-base auto;
+    }
+    h2 {
+        background-color: $accent-color;
+        color: $white;
+        text-align: center;
+    }
+    h3 {
+        border: solid 1vmin $accent-color;
+        padding: 1em;
+    }
+    h4 {
+        border-left: solid 1vmin $accent-color;
+    }
+    h5 {
+        border-bottom: solid 1vmin $accent-color;
+    }
+    h6 {
+        border-bottom: solid 1vmin $gray;
+    }
+
+    blockquote {}
+    q {}
+    address{
+        &::before{
+            content: '';
+            font-family: 'fontawesome';
+        }
+    }
+
+    table {}
+    thead {}
+    tbody {}
+    tfoot {}
+    tr {}
+    th {}
+    td {}
+}
