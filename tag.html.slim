@@ -7,7 +7,9 @@
 - twitter = '@' + config.twitter
 - data = @locals
 - logo = data['logo']
+- meta_url = data['meta_url']
 - site_title = data['site_title']
+- title = data['title']
 - description = data['description']
 - posts = data['posts']
 doctype html
@@ -19,21 +21,45 @@ html
         meta name='renderer' content='webkit'
         meta name='description' content=description
         meta property='og:type' content='article'
-        meta property='og:title' content=site_title
-        meta property='og:url' content=site_url
+        meta property='og:title' content=title
+        meta property='og:url' content=meta_url
         meta property='og:description' content=description
         meta property='og:site_name' content=site_title
         meta property='og:image' content=logo
         meta name='twitter:card' content='summary'
         meta name='twitter:domain' content=domain
-        meta name='twitter:title' content=site_title
+        meta name='twitter:title' content=title
         meta name='twitter:description' content=description
         meta name='twitter:image' content=logo
         meta name='twitter:site' content=twitter
         title
-            = site_title
+            = title
         scss:
             @import './style/list.scss';
+        script type='application/ld+json'
+            |{
+            |    "@context":"http://schema.org",
+            |    "@type": "BreadcrumbList",
+            |    "itemListElement":
+            |    [
+            |        {
+            |            "@type": "ListItem",
+            |            "position": 1,
+            |            "item":{
+            |                "@id": "#{site_url}",
+            |                "name": "#{site_title}"
+            |            }
+            |        },
+            |        {
+            |            "@type": "ListItem",
+            |            "position": 2,
+            |            "item":{
+            |                "@id": "#{meta_url}",
+            |                "name": "#{title}"
+            |            }
+            |        }
+            |    ]
+            |}
     body
         header.site-header
             h1.site-title

@@ -46,13 +46,14 @@ class MAKE
         tags = JSON.parse(tags.body)
         tags.each do |tag|
             id = tag['id'].to_s
+            url = "tags/#{id}.html"
             total_posts = wp_client.get_data("wp-json/wp/v2/posts?tags=#{id}")
             total_posts = total_posts.headers['x-wp-total']
             posts = wp_client.get_data("wp-json/wp/v2/posts?_embed&tags=#{id}")
             posts = JSON.parse(posts.body)
-            data = {'site_title'=>site_title,'description'=>description,'posts'=>posts}
+            data = {'site_title'=>site_title,'title'=>tag['name'],'description'=>description,'meta_url'=>url,'posts'=>posts}
             body = Slim::Template.new('tag.html.slim').render(PASS_data.new(data))
-            File.open("tags/#{id}.html","w") do |text|
+            File.open(url,"w") do |text|
                 text.puts(body)
             end
         end
