@@ -51,6 +51,7 @@ article {
     display: flex;
     justify-content: space-between;
     overflow-x: auto;
+    padding: 0;
     width: inherit;
 
     &::before {
@@ -73,6 +74,7 @@ article {
     display: flex;
     justify-content: space-between;
     overflow-x: auto;
+    padding: 0;
     width: inherit;
 
     li {
