@@ -36,6 +36,7 @@ article {
 
 .tag-list {
     display: flex;
+    width: 100%;
 
     &::before {
         background-color: $accent-color;
