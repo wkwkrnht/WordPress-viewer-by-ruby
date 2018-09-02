@@ -109,7 +109,7 @@ html lang=lang
                             span class='fas fa-share'
                     li
                         a href='https://mastoshare.net/post.php' title='Toot this'
-                            | toot
+                            span class='fab fa-mastodon'
                     li
                         a href='https://twitter.com/share?url=#{meta_url}&amp;text=#{title}' title='Tweet this'
                             span class='fab fa-twitter'
@@ -121,7 +121,7 @@ html lang=lang
                             span class='fab fa-line'
                     li
                         a href='https://plus.google.com/share?url=#{meta_url}' title='Share this to your group'
-                            span class='fab fa-gplus'
+                            span class='fab fa-google-plus-g'
                     li
                         a href='https://www.linkedin.com/shareArticle?mini=true&url=#{meta_url}&amp;title=#{title}' title='Share this on linkedin'
                             span class='fab fa-linkedin'
@@ -148,7 +148,7 @@ html lang=lang
                             span class='fab fa-hatebu'
                     li
                         a href='https://getpocket.com/edit?url=#{meta_url}&amp;title=#{title}' title='Pocket this'
-                            span class='fab fa-pocket'
+                            span class='fab fa-get-pocket'
                     li
                         a href='http://www.instapaper.com/text?u=#{meta_url}' title='Share this to your TL on Instapaper'
                             span class='fab icon-instapaper'
@@ -157,10 +157,10 @@ html lang=lang
                             span class='fab fa-tumblr'
                     li
                         a href='mailto:?Subject=#{title}&amp;Body=#{meta_url}' title='Mail this'
-                            span class='fab fa-paper-plane'
+                            span class='fas fa-envelope-open'
                     li
                         a href='javascript:void(0);' onClick='window.print();return false;' title='Print this'
-                            span class='fab fa-print'
+                            span class='fas fa-print'
                 a.copyright href='/' title='Go to home'
                     = first_post_year
                     | &copy;

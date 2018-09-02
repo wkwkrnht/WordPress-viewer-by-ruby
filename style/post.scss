@@ -48,6 +48,13 @@ article {
 
     & li {
         display: inline-block;
+        padding: initial 2em;
+    }
+}
+
+.share-button {
+    a {
+        color: $root-color;
     }
 }
 
@@ -100,19 +107,19 @@ article {
         }
 
         & .fa-twitter {
-            color: #55acee;
+            color: $twitter;
         }
 
         & .fa-thumbs-up {
-            color: #3b5998;
+            color: $facebook;
         }
 
         & .fa-get-pocket {
-            color: #ef3f56;
+            color: $pocket;
         }
 
         & .hatebu {
-            color: #00a5de;
+            color: $hatebu;
             font: 900 monospace;
         }
     }
