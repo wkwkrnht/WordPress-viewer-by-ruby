@@ -36,14 +36,16 @@ article {
 
 .tag-list {
     display: flex;
-    width: 100%;
+    justify-content: space-between;
+    overflow-x: auto;
+    width: inherit;
 
     &::before {
         background-color: $accent-color;
         color: $white;
         content: 'Tag';
         height: 2em;
-        margin: auto 1em auto auto;
+        margin: 0;
         text-align: center;
         vertical-align: middle;
         width: 6em;
@@ -55,6 +57,15 @@ article {
 }
 
 .share-button {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    width: inherit;
+
+    li {
+        display: inline-block;
+    }
+
     a {
         color: $root-color;
     }
