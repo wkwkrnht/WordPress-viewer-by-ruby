@@ -126,10 +126,12 @@ html
                             span class='fab fa-linkedin'
                     li
                         a href='https://bufferapp.com/add?url#{meta_url}&amp;title=#{title}' title='Share this via buffer'
-                            span class='fab fa-buffer'
+                            span class='fab fa-buffer monospace'
+                                | buffer
                     li
                         a href='http://hootsuite.com/hootlet/social-share?url=#{meta_url}&amp;title=#{title}&amp;partner=#{site_title}'  title='Share this via hootsute'
-                            span class='fab fa-hootsuite'
+                            span class='fab fa-hootsuite monospace'
+                                | Hootsuite
                     li
                         a href='https://www.reddit.com/submit?url=#{meta_url}' title='Share this to reddit users'
                             span class='fab fa-reddit'
@@ -144,13 +146,15 @@ html
                             span class='fab fa-digg'
                     li
                         a href='http://b.hatena.ne.jp/add?mode=confirm&url=#{meta_url}&amp;title=#{title}' title='この記事をはてブする'
-                            span class='fab fa-hatebu'
+                            span class='fab fa-hatebu monospace'
+                                | B!
                     li
                         a href='https://getpocket.com/edit?url=#{meta_url}&amp;title=#{title}' title='Pocket this'
                             span class='fab fa-get-pocket'
                     li
                         a href='http://www.instapaper.com/text?u=#{meta_url}' title='Share this to your TL on Instapaper'
-                            span class='fab icon-instapaper'
+                            span class='fab icon-instapaper monospace'
+                                | I
                     li
                         a href='https://www.tumblr.com/widgets/share/tool?canonicalUrl=#{meta_url}' title='Share this to your blog on tumblr'
                             span class='fab fa-tumblr'

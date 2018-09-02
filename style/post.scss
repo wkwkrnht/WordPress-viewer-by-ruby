@@ -68,6 +68,10 @@ article {
 
     a {
         color: $root-color;
+
+        .monospace {
+            font-family: monospace;
+        }
     }
     .fa-twitter{
         color: $twitter;
