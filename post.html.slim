@@ -21,11 +21,11 @@
 - if if_eyecatch == nil
     - eyecatch = site_url + '/lib/no-img/full.svg'
 - else
-    - img = if_img[0]['media_details']['sizes']
-    - img = img.select { |k, v| k.include?('-full') }
-    - img_key = img.keys
-    - img_key = img_key[0]
-    - img = img[img_key]['source_url']
+    - eyecatch = if_eyecatch[0]['media_details']['sizes']
+    - eyecatch = eyecatch.select { |k, v| k.include?('-full') }
+    - eyecatch_key = eyecatch.keys
+    - eyecatch_key = eyecatch_key[0]
+    - eyecatch = img[eyecatch_key]['source_url']
 doctype html
 html
     head
