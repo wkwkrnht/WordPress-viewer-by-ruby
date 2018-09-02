@@ -17,10 +17,6 @@ class GET_config
         end
     end
 
-    def language
-        return @config['language']
-    end
-
     def site_url
         return @config['site_url']
     end

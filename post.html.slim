@@ -3,7 +3,6 @@
 - config = GET_config.new
 - first_post_year = config.first_post_year
 - site_url = config.site_url
-- lang = config.language
 - domain = site_url.gsub('http://','')
 - domain = site_url.gsub('https://','')
 - twitter = '@' + config.twitter
@@ -24,7 +23,7 @@
     - eyecatch = if_eyecatch[0]['source_url']
 - meta_url = site_url + '/posts/' + @locals['id'].to_s
 doctype html
-html lang=lang
+html
     head
         meta charset='utf-8'
         meta content='IE=edge' http-equiv='X-UA-Compatible'

@@ -5,14 +5,13 @@
 - domain = site_url.gsub('http://','')
 - domain = site_url.gsub('https://','')
 - twitter = '@' + config.twitter
-- lang = config.language
 - data = @locals
 - logo = data['logo']
 - site_title = data['site_title']
 - description = data['description']
 - posts = data['posts']
 doctype html
-html lang=lang
+html
     head
         meta charset='utf-8'
         meta content='IE=edge' http-equiv='X-UA-Compatible'
