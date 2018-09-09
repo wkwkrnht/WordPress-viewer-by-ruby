@@ -7,7 +7,7 @@
     box-shadow: 0 0 3vmin $darken-shadow;
     color: $white;
     height: 10%;
-    margin: 0 0 calc( #{$vertical-base} * 3 );
+    margin: calc( #{$vertical-base} * 3 ) 0;
     padding: $vertical-base 0 0;
     text-align: center;
     width: 100%;
